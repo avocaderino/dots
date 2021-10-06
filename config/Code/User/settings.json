@@ -1,0 +1,94 @@
+{
+    "files.autoSave": "afterDelay",
+    "workbench.colorTheme": "Nord",
+    "editor.fontFamily": "'Hack','Monaco'",
+    "editor.fontWeight": "normal",
+    "editor.fontLigatures": false,
+    "terminal.integrated.fontFamily": "monospace",
+    // colours braces
+    "editor.bracketPairColorization.enabled": true,
+    // suggest preview
+    "editor.suggest.preview": true,
+    // wraps after 70 characters
+    "rewrap.wrappingColumn": 70,
+    "rewrap.autoWrap.enabled": true,
+    "rewrap.doubleSentenceSpacing": true,
+    "explorer.confirmDelete": false,
+    "window.autoDetectColorScheme": true,
+    // text customizations
+    "editor.tokenColorCustomizations": {
+        "[One Dark Pro Darker]": {
+            "strings": "#9de3ff",
+            "textMateRules": [
+                {
+                    "scope": "punctuation",
+                    "settings": {
+                        "foreground": "#9de3ff"
+                    }
+                },
+                {
+                    "scope": "punctuation.definition.string.begin",
+                    "settings": {
+                        "foreground": "#9de3ff"
+                    }
+                },
+                {
+                    "scope": "punctuation.definition.string.end",
+                    "settings": {
+                        "foreground": "#9de3ff"
+                    }
+                }
+            ]
+        },
+        "[Nord]": {
+            "strings": "#3eac99"
+        },
+        "textMateRules": [
+            {
+                "scope": "text.notes.info",
+                "settings": {
+                    "foreground": "#17a2b8",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "text.notes.success",
+                "settings": {
+                    "foreground": "#28a745",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "text.notes.warning",
+                "settings": {
+                    "foreground": "#ffc107",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "text.notes.danger",
+                "settings": {
+                    "foreground": "#dc3545",
+                    "fontStyle": "bold"
+                }
+            }
+        ]
+    },
+    //theme customizations
+    "workbench.colorCustomizations": {
+        "editorBracketHighlight.foreground1": "#ffffff",
+        "editorBracketHighlight.foreground2": "#6ebdc7",
+        "[Nord]": {
+            "editor.background": "#2b2f3b"
+        }
+    },
+    //Daily Notes
+    "dailyNotes.filePath": "/home/sanjay/Documents/VScode/Daily Notes/daily-notes.md",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    }
+}
