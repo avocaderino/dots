@@ -10,4 +10,10 @@ alias yeet='sudo apt remove --purge'
 alias dup='rsync -ah --info=progress2'
 
 # move to trash
-alias chodi='mv --force -t ~/.local/share/Trash/files'
+alias waste='mv --force -t ~/.local/share/Trash/files'
+
+# search for packages
+alias evida='apt search --names-only'
+
+# run previos command as sudo
+alias fuck='sudo $(fc -ln -1)'
