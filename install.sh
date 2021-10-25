@@ -2,7 +2,7 @@
 
 echo "Welcome to sanjay's files repository"
 
-echo "What is your username?"
+echo "What is your compueter username?"
 read name
 dest_dir="/home/$name/"
 
