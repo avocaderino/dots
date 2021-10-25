@@ -12,10 +12,10 @@ read files
 if [[ ${files,,} =~ y ]]
     then
         echo "Downloading the files"
-        cp -v Pictures/* $dest_dir/Pictures/
-        cp -v  dotfiles/zshrc $dest_dir/.zshrc
-        cp -v dotfiles/bash_aliases $dest_dir/.bash_aliases
-        cp -fv dotfiles/config/* $dest_dir/.config/
+        cp -rv Pictures/* $dest_dir/Pictures/
+        cp -rv  dotfiles/zshrc $dest_dir/.zshrc
+        cp -rv dotfiles/bash_aliases $dest_dir/.bash_aliases
+        cp -frv dotfiles/config/* $dest_dir/.config/
         echo "Finished downloading the files"
 
 else
