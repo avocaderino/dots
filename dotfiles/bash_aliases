@@ -4,7 +4,7 @@
 alias yay='sudo apt update && sudo apt upgrade'
 
 # purge an installed package
-alias yeet='sudo apt remove --purge'
+alias yeet='sudo apt remove --purge && sudo apt autoremove --purge'
 
 # copy with a progress bar using rsync
 alias dup='rsync -ah --info=progress2'
@@ -16,4 +16,4 @@ alias waste='mv --force -t ~/.local/share/Trash/files'
 alias evida='apt search --names-only'
 
 # run previos command as sudo
-alias fuck='sudo $(fc -ln -1)'
+alias pls='sudo $(fc -ln -1)'
