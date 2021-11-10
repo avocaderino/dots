@@ -1,0 +1,97 @@
+configuration {
+	modi:				"drun";
+	font:				"Fira Sans 12";
+    show-icons:                     true;
+    icon-theme:             "Papirus";
+	display-drun: 			"";
+	sidebar-mode: 			false;
+}
+
+@theme "/dev/null"
+
+* {
+	bg:				#2E2E2E;
+	fg:				#EAEAEA;
+	button:				#292929;
+
+	background-color:		@bg;
+	text-color:			@fg;
+}
+
+window {
+	transparency:                   "real";
+	border-radius:                  10px;
+	width:			    	40%;
+	padding: 			20px;
+	border:				1px;
+	border-color:			#212121;
+}
+
+prompt {
+	enabled:			true;
+	horizontal-align:		0.5;
+	vertical-align:			0.5;
+	background-color:		@button;
+	border:                         0px;
+	border-color:                   @fg;
+	border-radius:                  10px;
+	padding:			0 1% 0;
+}
+
+entry {
+	placeholder:			"";
+	expand:                         true;
+	padding:                        1.5%;
+	background-color:               @button;
+        placeholder-color:              @fg;
+	border:				2px;
+	border-color:			@fg;
+	border-radius:			10px;
+}
+
+inputbar {
+	children: 			[ entry ];
+	expand:                         false;
+	spacing:			1%;
+}
+
+listview {
+	columns:                        1;
+	lines:	                        6;
+	cycle:                          false;
+	dynamic:                        true;
+	layout:                         vertical;
+}
+
+mainbox {
+	children:                       [ inputbar, listview ];
+	spacing:                       	2%;
+	padding:                        2% 1% 2% 1%;
+}
+
+element {
+	orientation:                    vertical;
+	border-radius:                  10px;
+	padding:			1.5% 0.75%;
+}
+
+element-icon {
+        size:                           48px;
+        horizontal-align:       0.5;
+}
+
+element-text {
+	expand:                         true;
+	vertical-align:                 0.5;
+	background-color:               inherit;
+        text-color:                     inherit;
+}
+
+element selected {
+	background-color:               @fg;
+	text-color:                     @bg;
+	border-radius:                  10px;
+}
+
+listview, element, element selected, element-icon, element-text {
+}
