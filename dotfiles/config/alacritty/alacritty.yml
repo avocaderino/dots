@@ -18,8 +18,8 @@ window:
   # Specified in number of columns/lines, not pixels.
   # If both are `0`, this setting is ignored.
   dimensions:
-    columns: 95
-    lines: 35
+    columns: 0
+    lines: 0
 
   # Window position (changes require restart)
   #
@@ -112,7 +112,7 @@ font:
     # family: Source Code Pro
     # family: CodeNewRoman Nerd Font
     # family: RobotoMono Nerd Font
-    # family: Hack
+    family: Hack
     # family: JetBrains Mono
     # family: Ubuntu Mono
     # family: Monofur Nerd Font
@@ -405,7 +405,7 @@ schemes:
       white:   '0xebdbb2'
 
 # Choose ONE color scheme from those available in the above list.
-colors: *doom-one
+#colors: *doom-one
 
 # Visual Bell
 #

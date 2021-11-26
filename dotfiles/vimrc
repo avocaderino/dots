@@ -24,14 +24,14 @@ filetype indent on
 " Turn syntax highlighting on.
 syntax on
 
-" Highlight cursor line underneath the cursor horizontally.
-set cursorline
+" Don't highlight cursor line underneath the cursor horizontally.
+set nocursorline
 
 " Don't Highlight cursor line underneath the cursor vertically.
 set nocursorcolumn
 
-" Add numbers to each line on the left-hand side.
-set number
+" Don't add numbers to each line on the left-hand side.
+set nonumber
 
 " Set shift width to 4 spaces.
 set shiftwidth=4
@@ -83,27 +83,24 @@ set wildmode=list:longest
 " Wildmenu will ignore files with these extensions.
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
-" set Vim-specific sequences for RGB colors | enable true colors
+" Set Vim-specific sequences for RGB colors | enable true colors.
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
+
+" Set colorcheme.
+colorscheme base16-tomorrow-night
 
 
 " PLUGINS ---------------------------------------------------------------- {{{
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'arcticicestudio/nord-vim'
-Plug 'morhetz/gruvbox'
-Plug 'sainnhe/gruvbox-material'
-
 call plug#end()
 
 
 " }}}
-
-" Set the color scheme.
-colorscheme gruvbox-material
+"
 
 " MAPPINGS --------------------------------------------------------------- {{{
 
