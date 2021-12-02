@@ -1,13 +1,17 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""               
-"               
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
 "               ██╗   ██╗██╗███╗   ███╗██████╗  ██████╗
 "               ██║   ██║██║████╗ ████║██╔══██╗██╔════╝
-"               ██║   ██║██║██╔████╔██║██████╔╝██║     
-"               ╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║     
+"               ██║   ██║██║██╔████╔██║██████╔╝██║
+"               ╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║
 "                ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╗
 "                 ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
-"               
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""               
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Disable vi compatibility which can cause unexpected shit
+set nocompatible
+
 " Enable type file detection
 filetype on
 
@@ -25,6 +29,9 @@ set nocursorcolumn
 
 " Add numbers to each line on the left-hand side.
 set nonumber
+
+" Show row and column number on last line
+set noruler
 
 " Set shift width to 4 spaces.
 set shiftwidth=4
@@ -92,7 +99,8 @@ colorscheme base16-tomorrow-night
 syntax on
 
 " Highlights
-hi Search guifg=None guibg=#282a2e
+hi Search   guifg=None    guibg=#282a2e
+hi LineNr   guifg=#969896 guibg=None
 
 " }}}
 
@@ -100,6 +108,7 @@ hi Search guifg=None guibg=#282a2e
 " Plugins ---------------------------------------------------------------- {{{
 
 call plug#begin('~/.local/share/nvim/site/plugged')
+
 
 
 call plug#end()
@@ -138,6 +147,9 @@ nnoremap N Nzz
 
 " Yank from cursor to the end of line.
 nnoremap Y y$
+
+" Paste at end of line
+nnoremap P $p
 
 " You can split the window in Vim by typing :split or :vsplit.
 " Navigate the split view easier by pressing CTRL+j, CTRL+k, CTRL+h, or CTRL+l.
@@ -181,28 +193,25 @@ augroup cursor_off
     autocmd WinEnter * set nocursorline nocursorcolumn
 augroup END
 
-" Load changes in file automatically
-"autocmd FocusGained * checktime
-
 " }}}
 
 
 " Status line ------------------------------------------------------------ {{{
 
-" The current mode.    
+" The current mode.
 let g:currentmode={
-	\ 'n'  : 'NORMAL',
-	\ 'v'  : 'VISUAL',
-	\ 'V'  : 'V·LINE',
-	\ '' : 'V·BLOCK',
-	\ 's'  : 'SELECT',
-	\ 'S'  : 'S·LINE',
-	\ '' : 'S·BLOCK',
-	\ 'i'  : 'INSERT',
-	\ 'R'  : 'REPLACE',
-    \ 'Rv' : 'V·REPLACE',
-	\ 'c'  : 'COMMAND',
-	\}
+            \ 'n'  : 'NORMAL',
+            \ 'v'  : 'VISUAL',
+            \ 'V'  : 'V·LINE',
+            \ '' : 'V·BLOCK',
+            \ 's'  : 'SELECT',
+            \ 'S'  : 'S·LINE',
+            \ '' : 'S·BLOCK',
+            \ 'i'  : 'INSERT',
+            \ 'R'  : 'REPLACE',
+            \ 'Rv' : 'V·REPLACE',
+            \ 'c'  : 'COMMAND',
+            \}
 
 
 " Clear status line when vimrc is reloaded
@@ -210,11 +219,11 @@ set statusline=
 
 " Status line highlighted group
 set statusline+=\ %{toupper(g:currentmode[mode()])} " Current mode
-set statusline+=\  
+set statusline+=\
 
 " Status line unhighlighted group
 set statusline+=%1*
-set statusline+=%< 
+set statusline+=%<
 set statusline+=\ %0.30t                            " Filename
 set statusline+=%{&readonly?'\ ':''}               " Read only
 set statusline+=\ %M                                " Modified
@@ -225,7 +234,7 @@ set statusline+=%=
 " Status line unhighlighted group
 set statusline+=\ %{&filetype}                      " File type
 set statusline+=\ [%{&fileencoding}]                " File encoding
-set statusline+=\  
+set statusline+=\
 
 " Status line highlighted group
 set statusline+=%*
