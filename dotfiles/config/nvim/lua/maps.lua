@@ -15,4 +15,3 @@ map("n", "Y", "y$", options)             -- yank to eol
 map("n", "P", "$P", options)             -- past at eol
 map('n', 'n', 'nzz', options)            -- centre while movin' up
 map('n', 'N', 'Nzz', options)            -- and down, like a roller coastah
-

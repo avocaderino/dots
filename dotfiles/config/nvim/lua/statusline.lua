@@ -1,4 +1,4 @@
--- Status Line
+-- Status Line ---------------------------------------------------------------
 
 local fn = vim.fn
 local api = vim.api
@@ -19,9 +19,9 @@ M.colors = {
 
 M.trunc_width = setmetatable({
     mode       = 80,
-    filetype   = 70,
-    encoding   = 60,
-    line_col   = 80,
+    filetype   = 60,
+    encoding   = 70,
+    line_col   = 70,
 }, {
     __index = function()
         return 80 -- handle edge cases, if there"s any
@@ -33,7 +33,9 @@ M.is_truncated = function(_, width)
     return current_width < width
 end
 
-M.modes = setmetatable({
+------------------------------------------------------------------------------
+
+M.modes = {
     ["n"]  = {"Normal", "N"};
     ["no"] = {"N·Pending", "N·P"} ;
     ["v"]  = {"Visual", "V" };
@@ -54,11 +56,7 @@ M.modes = setmetatable({
     ["r?"] = {"Confirm ", "C"};
     ["!"]  = {"Shell ", "S"};
     ["t"]  = {"Terminal ", "T"};
-}, {
-    __index = function()
-        return {"Unknown", "U"} -- handle edge cases
-    end
-})
+}
 
 M.get_current_mode = function(self)
     local current_mode = api.nvim_get_mode().mode
@@ -66,17 +64,16 @@ M.get_current_mode = function(self)
     if self:is_truncated(self.trunc_width.mode) then
         return string.format(" %s ", M.modes[current_mode][2]):upper()
     end
-
     return string.format(" %s ", M.modes[current_mode][1]):upper()
 end
 
 M.get_filename = function()
-    return " %<%t "
+    return " %t "
 end
 
 M.get_readonly = function()
     local readonly = api.nvim_buf_get_option(0, "readonly")
-    if readonly then return "" end
+    if readonly then return " " end
     return ""
 end
 
@@ -86,7 +83,7 @@ M.get_modified = function()
 end
 
 M.get_filetype = function(self)
-    local file_name, filetype = api.nvim_buf_get_name(0), vim.bo.filetype
+    local file_name, filetype = self:get_filename(), vim.bo.filetype
     local icon = require "modules.icons".get_icon(file_name, filetype, { default = true })
 
     if self:is_truncated(self.trunc_width.filetype) then
@@ -98,19 +95,16 @@ end
 M.get_encoding = function(self)
     local encoding = vim.bo.fileencoding
     if encoding == "" then return " "
-    elseif self:is_truncated(self.trunc_width.encoding) then
-        return ""
-    end
-
-    return string.format(" %s  ", encoding):lower()
+    elseif self:is_truncated(self.trunc_width.encoding) then return "" end
+    return string.format("| %s  ", encoding):lower()
 end
 
 M.get_line_col = function(self)
     if self:is_truncated(self.trunc_width.line_col) then return " %l:%c " end
     return " %-8(row: %l%) %-7(col: %c%) "
 end
-
-M.status_line = function(self)
+------------------------------------------------------------------------------
+M.set_active = function(self)
     local colors = self.colors
 
     local mode = colors.mode .. self:get_current_mode()
@@ -133,15 +127,22 @@ M.status_line = function(self)
     })
 end
 
-function StatusLine()
-    return M.status_line(M)   -- Feel the powaaaahhh
+M.set_inactive = function(self)
+    return self.colors.inactive .. " %t "
 end
 
+Statusline = setmetatable(M, {
+    __call = function(self, mode)
+        return self["set_" .. mode](self)
+    end
+})
+
 -- set statusline
--- TODO(elianiva): replace this once we can define autocmd using lua
-vim.cmd ([[
+-- TODO: replace this once we can define autocmd using lua
+api.nvim_exec([[
     augroup Statusline
-        au!
-        au WinEnter,BufEnter * setlocal statusline=%!v:lua.StatusLine()
+    au!
+    au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline('active')
+    au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline('inactive')
     augroup END
-]])
+]], false)

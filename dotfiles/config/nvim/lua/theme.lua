@@ -7,7 +7,7 @@ vim.o.termguicolors = true
 vim.cmd("syntax on")
 
 -- Set colorsheme to 'Tomorrow night'
-vim.cmd("colorscheme base16-tomorrow-night")
+require "colors.base16-tomorrow-night"
 
 -- Highlight groups
 vim.cmd([[
