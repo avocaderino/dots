@@ -46,11 +46,12 @@ vim.g.terminal_color_15 = nord6
 
 local hi = function(opts)
   vim.cmd(
-    string.format("hi %s guifg=%s guibg=%s gui=%s guisp=%s", 
-      opts.group, 
-      opts.guifg or "NONE", 
-      opts.guibg or "NONE", 
-      opts.gui or "NONE", 
+    string.format(
+      "hi %s guifg=%s guibg=%s gui=%s guisp=%s",
+      opts.group,
+      opts.guifg or "NONE",
+      opts.guibg or "NONE",
+      opts.gui or "NONE",
       opts.guisp or "NONE"
     )
   )

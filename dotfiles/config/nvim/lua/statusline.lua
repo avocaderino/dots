@@ -1,4 +1,4 @@
--- Status Line ---------------------------------------------------------------
+-- Status Line ----------------------------------------------------------------
 
 local fn = vim.fn
 local api = vim.api
@@ -18,7 +18,7 @@ M.colors = {
 }
 
 M.trunc_width = setmetatable({
-    mode       = 80,
+    mode       = 70,
     filetype   = 60,
     encoding   = 70,
     line_col   = 70,
@@ -33,7 +33,7 @@ M.is_truncated = function(_, width)
     return current_width < width
 end
 
-------------------------------------------------------------------------------
+-- Entries ---------------------------------------------------------------------
 
 M.modes = {
     ["n"]  = {"Normal", "N"};
@@ -83,11 +83,11 @@ M.get_modified = function()
 end
 
 M.get_filetype = function(self)
-    local file_name, filetype = self:get_filename(), vim.bo.filetype
-    local icon = require "modules.icons".get_icon(file_name, filetype, { default = true })
+    local file_name, filetype, file_ext = fn.expand("%:t"), vim.bo.filetype, fn.expand("%:e")
+    local icon = require "nvim-web-devicons".get_icon(file_name, file_ext, { default = true })
 
     if self:is_truncated(self.trunc_width.filetype) then
-        return string.format(" %s ", icon) 
+        return string.format(" %s ", icon)
     end
     return string.format("  %s %s ", icon, filetype):lower()
 end
@@ -103,7 +103,9 @@ M.get_line_col = function(self)
     if self:is_truncated(self.trunc_width.line_col) then return " %l:%c " end
     return " %-8(row: %l%) %-7(col: %c%) "
 end
-------------------------------------------------------------------------------
+
+-- Setting the actual status line----------------------------------------------
+
 M.set_active = function(self)
     local colors = self.colors
 
