@@ -82,7 +82,7 @@ set wildmode=list:longest
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 " Undofile
-set undodir=~/.local/share/nvim/site/backup
+set undodir=~/.vim/backup
 set undofile
 set undoreload=10000
 
@@ -219,7 +219,7 @@ set statusline=
 
 " Status line highlighted group
 set statusline+=\ %{toupper(g:currentmode[mode()])} " Current mode
-set statusline+=\
+set statusline+=\  
 
 " Status line unhighlighted group
 set statusline+=%1*
@@ -234,7 +234,7 @@ set statusline+=%=
 " Status line unhighlighted group
 set statusline+=\ %{&filetype}                      " File type
 set statusline+=\ [%{&fileencoding}]                " File encoding
-set statusline+=\
+set statusline+=\  
 
 " Status line highlighted group
 set statusline+=%*
