@@ -1,4 +1,6 @@
--- Status Line ----------------------------------------------------------------
+-- Status Line
+
+-- {{{ Prep
 
 local fn = vim.fn
 local api = vim.api
@@ -33,7 +35,9 @@ M.is_truncated = function(_, width)
     return current_width < width
 end
 
--- Entries ---------------------------------------------------------------------
+-- }}}
+
+-- {{{ Entries
 
 M.modes = {
     ["n"]  = {"Normal", "N"};
@@ -104,7 +108,9 @@ M.get_line_col = function(self)
     return " %-8(row: %l%) %-7(col: %c%) "
 end
 
--- Setting the actual status line----------------------------------------------
+-- }}}
+
+-- {{{ Setting the actual status line
 
 M.set_active = function(self)
     local colors = self.colors
@@ -148,3 +154,6 @@ api.nvim_exec([[
     au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline('inactive')
     augroup END
 ]], false)
+
+-- }}}
+

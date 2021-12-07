@@ -93,7 +93,7 @@ highlight("TabLineSel", colors.base0B, colors.base01, "none", nil)
 -- Standard syntax highlighting
 highlight("Boolean", colors.base09, nil, nil, nil)
 highlight("Character", colors.base08, nil, nil, nil)
-highlight("Comment", colors.base03, nil, nil, nil)
+highlight("Comment", colors.base03, nil, "italic", nil)
 highlight("Conditional", colors.base0E, nil, nil, nil)
 highlight("Constant", colors.base09, nil, nil, nil)
 highlight("Define", colors.base0E, nil, "none", nil)

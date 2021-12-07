@@ -69,6 +69,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["lightspeed.nvim"] = {
+    loaded = true,
+    path = "/home/sanjay/.local/share/nvim/site/pack/packer/start/lightspeed.nvim",
+    url = "https://github.com/ggandor/lightspeed.nvim"
+  },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/home/sanjay/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
