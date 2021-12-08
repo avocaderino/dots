@@ -1,7 +1,7 @@
 -- Init
 
 require "theme"         -- lua/theme.lua
-require "statusline"
+require "statusline"    -- lua/statusline.lua
 require "plugins"       -- lua/plugins.lua
 
 
@@ -10,7 +10,7 @@ require "plugins"       -- lua/plugins.lua
 local o = vim.opt       -- pretty versatile
 local g = vim.g         -- global
 
--- {{{ vim.cmd
+-- vim.cmd {{{
 -- TODO replace asap
 vim.cmd([[
     filetype on
@@ -20,7 +20,7 @@ vim.cmd([[
 
 -- }}}}
 
--- {{{ Inbuilt Plugins
+-- Inbuilt Plugins {{{
 
 g.loaded_gzip         = 1
 g.loaded_tar          = 1
@@ -29,24 +29,23 @@ g.loaded_zipPlugin    = 1
 g.loaded_2html_plugin = 1
 g.loaded_matchit      = 1
 g.loaded_spec         = 1
-g.loaded_spellfile_plugin = 1
+g.loaded_tutor_mode_plugin = 1
 --g.loaded_netrw = 1              -- I have telescope now wuhoo, but still keeping it
 
 -- }}}
 
--- {{{ Languages
+-- Languages {{{
 
 g.loaded_python_provider = 0    -- python2 is deprecated anyway
 g.loaded_perl_provider  = 0     -- perl
 g.loaded_ruby_provider  = 0     -- ruby
 g.loaded_node_provider  = 0     -- the infamous node
 g.python3_host_prog     = "/usr/bin/python3"
-g.python_host_prog      = ''
-g.loaded_tutor_mode_plugin = 1
+g.loaded_spellfile_plugin = 1
 
 -- }}}
 
--- {{{ Interface
+-- Interface {{{
 
 g.netrw_liststyle   = 3         -- tree view
 o.showcmd           = true      -- show command
@@ -60,7 +59,7 @@ o.laststatus        = 2         -- always enable statusline
 
 -- }}}
 
--- {{{ Editor
+-- Editor {{{
 
 o.shiftwidth    = 4         -- indentation
 o.tabstop       = 4
@@ -78,7 +77,7 @@ o.spell         = false     -- ffs, I know how to spell
 
 -- }}}
 
--- {{{ File
+-- File {{{
 
 o.backup        = false     -- no backups
 o.undofile      = true      -- prevent fuckups
@@ -110,3 +109,4 @@ map("n", "<A-k>", "<C-w>k", options)        -- wind
 map("n", "<A-l>", "<C-w>l", options)        -- ows                                     
 
 -- }}}
+

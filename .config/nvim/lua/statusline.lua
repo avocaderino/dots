@@ -1,6 +1,6 @@
 -- Status Line
 
--- {{{ Prep
+-- Prep {{{
 
 local fn = vim.fn
 local api = vim.api
@@ -36,7 +36,7 @@ end
 
 -- }}}
 
--- {{{ Entries
+-- Modes {{{
 
 local modes = {
     ["n"]  = {"Normal", "N"};
@@ -70,14 +70,14 @@ local get_current_mode = function()
     return string.format(" %s ", modes[current_mode][1]):upper()
 end
 
+-- }}}
+
+-- File {{{
+
 local get_filename = function(buf)
     local filepath = api.nvim_buf_get_name(buf)
-    if filepath == "" then
-        return " [No Name] "
-    end
-    local num = string.find(string.reverse(filepath), "/")
-    local filename =  string.sub(filepath, #filepath - num + 2)
-    return string.format(" %s ", filename)
+    -- Beautiful
+    return string.format(" %%<%s ", filepath:match "[^/]*$")
 end
 
 local get_readonly = function(buf)
@@ -114,12 +114,12 @@ end
 
 -- }}}
 
--- {{{ Setting the actual status line
+-- Setting the actual status line {{{
 
 statusline = function()
     local win_id = vim.g.statusline_winid
     local buf = api.nvim_win_get_buf(win_id)
-
+    --elements
     local mode = colors.mode .. get_current_mode()
     local filename = colors.filename .. get_filename(buf)
     local readonly = colors.readonly .. get_readonly(buf)
@@ -143,7 +143,7 @@ end
 -- set statusline
 -- TODO: replace this once we can set it using lua
 vim.cmd([[
-    setlocal statusline=%!v:lua.statusline()
+    set statusline=%!v:lua.statusline()
 ]])
 
 -- }}}
