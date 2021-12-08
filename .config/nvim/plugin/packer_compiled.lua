@@ -74,11 +74,6 @@ _G.packer_plugins = {
     path = "/home/sanjay/.local/share/nvim/site/pack/packer/start/lightspeed.nvim",
     url = "https://github.com/ggandor/lightspeed.nvim"
   },
-  ["nvim-web-devicons"] = {
-    loaded = true,
-    path = "/home/sanjay/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
-    url = "https://github.com/kyazdani42/nvim-web-devicons"
-  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/sanjay/.local/share/nvim/site/pack/packer/start/packer.nvim",

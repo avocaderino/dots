@@ -4,10 +4,9 @@
 
 local fn = vim.fn
 local api = vim.api
-local M = {}
 
 -- highlight groups
-M.colors = {
+local colors = {
     active       = "%#StatusLine#",
     inactive     = "%#StatusLineNC#",
     mode         = "%#Edge#",
@@ -19,27 +18,27 @@ M.colors = {
     line_col     = "%#Edge#",
 }
 
-M.trunc_width = setmetatable({
+local trunc_width = {
     mode       = 70,
     filetype   = 60,
     encoding   = 70,
     line_col   = 70,
-}, {
-    __index = function()
-        return 80 -- handle edge cases, if there"s any
-    end
-})
+}
 
-M.is_truncated = function(_, width)
-    local current_width = api.nvim_win_get_width(0)
-    return current_width < width
+
+local is_truncated = function(width)
+    local win = vim.g.statusline_winid
+    local current_width = api.nvim_win_get_width(win)
+    if current_width ~= "" then
+    	return current_width < width
+    end
 end
 
 -- }}}
 
 -- {{{ Entries
 
-M.modes = {
+local modes = {
     ["n"]  = {"Normal", "N"};
     ["no"] = {"N·Pending", "N·P"} ;
     ["v"]  = {"Visual", "V" };
@@ -62,49 +61,54 @@ M.modes = {
     ["t"]  = {"Terminal ", "T"};
 }
 
-M.get_current_mode = function(self)
+local get_current_mode = function()
     local current_mode = api.nvim_get_mode().mode
 
-    if self:is_truncated(self.trunc_width.mode) then
-        return string.format(" %s ", M.modes[current_mode][2]):upper()
+    if is_truncated(trunc_width.mode) then
+        return string.format(" %s ", modes[current_mode][2]):upper()
     end
-    return string.format(" %s ", M.modes[current_mode][1]):upper()
+    return string.format(" %s ", modes[current_mode][1]):upper()
 end
 
-M.get_filename = function()
-    return " %t "
+local get_filename = function(buf)
+    local filepath = api.nvim_buf_get_name(buf)
+    if filepath == "" then
+        return " [No Name] "
+    end
+    local num = string.find(string.reverse(filepath), "/")
+    local filename =  string.sub(filepath, #filepath - num + 2)
+    return string.format(" %s ", filename)
 end
 
-M.get_readonly = function()
-    local readonly = api.nvim_buf_get_option(0, "readonly")
+local get_readonly = function(buf)
+    local readonly = api.nvim_buf_get_option(buf, "readonly")
     if readonly then return " " end
     return ""
 end
 
-M.get_modified = function()
+local get_modified = function()
     if vim.bo.modified then return "+" end
     return ""
 end
 
-M.get_filetype = function(self)
-    local file_name, filetype, file_ext = fn.expand("%:t"), vim.bo.filetype, fn.expand("%:e")
-    local icon = require "nvim-web-devicons".get_icon(file_name, file_ext, { default = true })
+local get_filetype = function(buf)
+    local filetype = api.nvim_buf_get_option(buf,"filetype")
+    local icon = require "utils".icons.lookup_filetype(filetype)
 
-    if self:is_truncated(self.trunc_width.filetype) then
+    if is_truncated(trunc_width.filetype) then
         return string.format(" %s ", icon)
     end
     return string.format("  %s %s ", icon, filetype):lower()
 end
 
-M.get_encoding = function(self)
+local get_encoding = function()
     local encoding = vim.bo.fileencoding
-    if encoding == "" then return " "
-    elseif self:is_truncated(self.trunc_width.encoding) then return "" end
+    if encoding == "" or is_truncated(trunc_width.encoding) then return " " end
     return string.format("| %s  ", encoding):lower()
 end
 
-M.get_line_col = function(self)
-    if self:is_truncated(self.trunc_width.line_col) then return " %l:%c " end
+local get_line_col = function()
+    if is_truncated(trunc_width.line_col) then return " %l:%c " end
     return " %-8(row: %l%) %-7(col: %c%) "
 end
 
@@ -112,16 +116,17 @@ end
 
 -- {{{ Setting the actual status line
 
-M.set_active = function(self)
-    local colors = self.colors
+statusline = function()
+    local win_id = vim.g.statusline_winid
+    local buf = api.nvim_win_get_buf(win_id)
 
-    local mode = colors.mode .. self:get_current_mode()
-    local filename = colors.filename .. self:get_filename()
-    local readonly = colors.readonly .. self:get_readonly()
-    local modified = colors.modified .. self:get_modified()
-    local filetype = colors.filetype .. self:get_filetype()
-    local encoding = colors.encoding .. self:get_encoding()
-    local line_col = colors.line_col .. self:get_line_col()
+    local mode = colors.mode .. get_current_mode()
+    local filename = colors.filename .. get_filename(buf)
+    local readonly = colors.readonly .. get_readonly(buf)
+    local modified = colors.modified .. get_modified()
+    local filetype = colors.filetype .. get_filetype(buf)
+    local encoding = colors.encoding .. get_encoding()
+    local line_col = colors.line_col .. get_line_col()
 
     return table.concat({
         mode,
@@ -135,25 +140,11 @@ M.set_active = function(self)
     })
 end
 
-M.set_inactive = function(self)
-    return self.colors.inactive .. " %t "
-end
-
-Statusline = setmetatable(M, {
-    __call = function(self, mode)
-        return self["set_" .. mode](self)
-    end
-})
-
 -- set statusline
--- TODO: replace this once we can define autocmd using lua
-api.nvim_exec([[
-    augroup Statusline
-    au!
-    au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline('active')
-    au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline('inactive')
-    augroup END
-]], false)
+-- TODO: replace this once we can set it using lua
+vim.cmd([[
+    setlocal statusline=%!v:lua.statusline()
+]])
 
 -- }}}
 
