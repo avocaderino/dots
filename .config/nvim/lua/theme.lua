@@ -14,7 +14,8 @@ vim.cmd([[
 
 hi Edge         guifg = #1c1c1c  guibg = #848a8a
 hi Inter        guifg = #c5c8c6  guibg = #2a2b2e
-hi Block        guifg = #c5c8c6  guibg = #373b41
+hi Block        guifg = #c5c8c6  guibg = #373b41 
+hi Gap          guifg = None     guibg = None
 hi Search       guifg = None     guibg = #282a2e
 hi MatchParen   guifg = None     guibg = #282a2e
 hi LineNr       guifg = #969896  guibg = None

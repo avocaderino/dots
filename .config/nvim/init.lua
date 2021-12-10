@@ -41,7 +41,7 @@ g.loaded_perl_provider  = 0     -- perl
 g.loaded_ruby_provider  = 0     -- ruby
 g.loaded_node_provider  = 0     -- the infamous node
 g.python3_host_prog     = "/usr/bin/python3"
-g.loaded_spellfile_plugin = 1
+g.loaded_spellfile_plugin = 1   -- isn't this technically a language too
 
 -- }}}
 
@@ -77,7 +77,7 @@ o.spell         = false     -- ffs, I know how to spell
 
 -- }}}
 
--- File {{{
+-- Backup {{{
 
 o.backup        = false     -- no backups
 o.undofile      = true      -- prevent fuckups
@@ -92,7 +92,7 @@ o.undoreload    = 10000
 local map = vim.api.nvim_set_keymap                                                    
                                                                                        
 map('n', ',', '', {})      -- leader                                                   
-vim.g.mapleader = ""                                                                   
+g.mapleader = ","                                                                   
                                                                                        
 options = { noremap = true }                                                           
                                                                                        
