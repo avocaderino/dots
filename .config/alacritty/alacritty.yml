@@ -49,7 +49,7 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
-  #decorations: full
+  decorations: full
 
   # Startup Mode (changes require restart)
   #
@@ -68,9 +68,9 @@ window:
   # Window class (Linux/BSD only):
   class:
     # Application instance name
-    instance: Terminal
+    instance: Alacritty
     # General application class
-    general: Terminal
+    general: Alacritty
 
   # GTK theme variant (Linux/BSD only)
   #
@@ -112,13 +112,13 @@ font:
     # family: Source Code Pro
     # family: CodeNewRoman Nerd Font
     # family: RobotoMono Nerd Font
-    family: Hack
-    # family: JetBrains Mono
+    # family: Hack
+    family: JetBrainsMono Nerd Font
     # family: Ubuntu Mono
     # family: Monofur Nerd Font
     # family: TerminessTTF Nerd Font
     # family: Mononoki Nerd Font
-    # family: Fira Mono 
+    # family: Fira Mono
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -159,7 +159,7 @@ font:
     # family: TerminessTTF Nerd Font
     # family: Mononoki Nerd Font
     # family: Fira Mono
-
+    
     # The `style` can be specified to pick a specific face.
     style: Italic
 
@@ -216,7 +216,7 @@ font:
   #use_thin_strokes: true
 
 # If `true`, bold text is drawn using the bright color variants.
-draw_bold_text_with_bright_colors: true
+draw_bold_text_with_bright_colors: false
 
 # COLOR SCHEMES
 schemes:
@@ -374,38 +374,66 @@ schemes:
       white:   '#fdf6e3' # base3
 
   # Colors (Gruvbox dark)
-  gruvbox-dark: &gruvbox-dark
+  gruvbox: &gruvbox
+    primary:
+      background: '#282828'
+      foreground: '#dfbf8e'
+
+    normal:
+      black:   '#665c54'
+      red:     '#ea6962'
+      green:   '#a9b665'
+      yellow:  '#e78a4e'
+      blue:    '#7daea3'
+      magenta: '#d3869b'
+      cyan:    '#89b482'
+      white:   '#dfbf8e'
+
+    bright:
+      black:   '#928374'
+      red:     '#ea6962'
+      green:   '#a9b665'
+      yellow:  '#e3a84e'
+      blue:    '#7daea3'
+      magenta: '#d3869b'
+      cyan:    '#89b482'
+      white:   '#dfbf8e'
+    
+  # Tokyonight
+  tokyonight: &tokyonight
     # Default colors
     primary:
-      # hard contrast: background = '0x1d2021'
-      background: '0x282828'
-      # soft contrast: background = '0x32302f'
-      foreground: '0xebdbb2'
+      background: '0x1a1b26'
+      foreground: '0xc0caf5'
 
     # Normal colors
     normal:
-      black:   '0x282828'
-      red:     '0xcc241d'
-      green:   '0x98971a'
-      yellow:  '0xd79921'
-      blue:    '0x458588'
-      magenta: '0xb16286'
-      cyan:    '0x689d6a'
-      white:   '0xa89984'
+      black:   '0x15161E'
+      red:     '0xf7768e'
+      green:   '0x9ece6a'
+      yellow:  '0xe0af68'
+      blue:    '0x7aa2f7'
+      magenta: '0xbb9af7'
+      cyan:    '0x7dcfff'
+      white:   '0xa9b1d6'
 
     # Bright colors
     bright:
-      black:   '0x928374'
-      red:     '0xfb4934'
-      green:   '0xb8bb26'
-      yellow:  '0xfabd2f'
-      blue:    '0x83a598'
-      magenta: '0xd3869b'
-      cyan:    '0x8ec07c'
-      white:   '0xebdbb2'
+      black:   '0x414868'
+      red:     '0xf7768e'
+      green:   '0x9ece6a'
+      yellow:  '0xe0af68'
+      blue:    '0x7aa2f7'
+      magenta: '0xbb9af7'
+      cyan:    '0x7dcfff'
+      white:   '0xc0caf5'
 
+    indexed_colors:
+      - { index: 16, color: '0xff9e64' }
+      - { index: 17, color: '0xdb4b4b' }
+  
 # Choose ONE color scheme from those available in the above list.
-#colors: *doom-one
+colors: *tokyonight
 
 # Visual Bell
 #
@@ -447,7 +475,7 @@ background_opacity: 1.0
   #save_to_clipboard: false
 
 # Allow terminal applications to change Alacritty's window title.
-#dynamic_title: true
+dynamic_title: true
 
 #cursor:
   # Cursor style

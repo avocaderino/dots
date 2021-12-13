@@ -1,14 +1,12 @@
 -- Status Line
 
--- Prep {{{
-
 --local fn = vim.fn     -- Got rid of this piece of shit from my statusline finally
 local api = vim.api
 
 local trunc_width = {
     mode       = 70,
     filetype   = 60,
-    encoding   = 70,
+    fileformat = 60,
     line_col   = 70,
 }
 
@@ -17,10 +15,6 @@ local is_truncated = function(width)
     local current_width = api.nvim_win_get_width(win)
     return current_width < width
 end
-
--- }}}
-
--- Modes {{{
 
 local modes = {
     ["n"]  = {"Normal",     "N"};
@@ -54,14 +48,10 @@ local get_current_mode = function()
     return string.format("%%#Edge# %s ", modes[current_mode][1]):upper()
 end
 
--- }}}
-
--- File {{{
-
 local get_filename = function(buf)
     local filepath = api.nvim_buf_get_name(buf)
     -- Beautiful
-    return string.format("%%#Inter# %%<%s ", filepath:match "[^/]+$" or " No Name")
+    return string.format(" %%<%s ", filepath:match "[^/]+$" or " No Name")
 end
 
 local get_readonly = function(buf)
@@ -79,52 +69,51 @@ local get_filetype = function(buf)
     local icon = require "utils".icons.lookup_filetype(filetype)
 
     if is_truncated(trunc_width.filetype) then
-        return string.format("%%#Block# %s", icon)
+        return string.format(" %s ", icon)
     end
-    return string.format("%%#Block#  %s %s ", icon, filetype):lower()
+    return string.format("  %s %s ", icon, filetype)
 end
 
-local get_encoding = function(bu)
-    local encoding = api.nvim_buf_get_option(buf, "fenc")
-    if encoding == "" or is_truncated(trunc_width.encoding) then return " " end
-    return string.format("| %s  ", encoding):lower()
+local get_fileformat = function(bu)
+    if is_truncated(trunc_width.fileformat) then
+        return ""
+    end
+    return string.format("| %s  ", api.nvim_buf_get_option(buf, "fileformat"))
 end
 
 local get_line_col = function()
-    if is_truncated(trunc_width.line_col) then return "%#Edge# %l:%c " end
-    return "%#Edge#  %l:%c  "
+    if is_truncated(trunc_width.line_col) then return " %l:%-c " end
+    return " Ln %l, Col %-c "
 end
-
--- }}}
-
--- Setting the actual status line {{{
 
 statusline = function()
     local win_id = vim.g.statusline_winid
     local buf = api.nvim_win_get_buf(win_id)
     --elements
-    local mode = get_current_mode()
-    local filename = get_filename(buf)
-    local readonly = get_readonly(buf)
-    local modified = get_modified()
-    local filetype = get_filetype(buf)
-    local encoding = get_encoding(buf)
-    local line_col = get_line_col()
+    local mode       = get_current_mode()
+    local filename   = get_filename(buf)
+    local readonly   = get_readonly(buf)
+    local modified   = get_modified()
+    local filetype   = get_filetype(buf)
+    local fileformat = get_fileformat(buf)
+    local line_col   = get_line_col()
 
     return table.concat({
+        "%#Edge#",
         mode,
+        "%#Inter#",
         filename,
         readonly,
         modified,
         "%=",
+        "%#Block#",
         filetype,
-        encoding,
+        fileformat,
+        "%#Edge#",
         line_col,
     })
 end
 
 -- set statusline
 vim.opt.statusline = "%!v:lua.statusline()"
-
--- }}}
 
