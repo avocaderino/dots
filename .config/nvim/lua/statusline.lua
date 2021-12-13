@@ -6,7 +6,7 @@ local api = vim.api
 local trunc_width = {
     mode       = 70,
     filetype   = 60,
-    fileformat = 60,
+    encoding   = 60,
     line_col   = 70,
 }
 
@@ -51,7 +51,7 @@ end
 local get_filename = function(buf)
     local filepath = api.nvim_buf_get_name(buf)
     -- Beautiful
-    return string.format(" %%<%s ", filepath:match "[^/]+$" or " No Name")
+    return string.format(" %.30s ", filepath:match "[^/]+$" or "No Name")
 end
 
 local get_readonly = function(buf)
@@ -71,19 +71,12 @@ local get_filetype = function(buf)
     if is_truncated(trunc_width.filetype) then
         return string.format(" %s ", icon)
     end
-    return string.format("  %s %s ", icon, filetype)
-end
-
-local get_fileformat = function(bu)
-    if is_truncated(trunc_width.fileformat) then
-        return ""
-    end
-    return string.format("| %s  ", api.nvim_buf_get_option(buf, "fileformat"))
+    return string.format("  %s %s  ", icon, filetype)
 end
 
 local get_line_col = function()
     if is_truncated(trunc_width.line_col) then return " %l:%-c " end
-    return " Ln %l, Col %-c "
+    return " %2l:%-2c "
 end
 
 statusline = function()
@@ -95,7 +88,6 @@ statusline = function()
     local readonly   = get_readonly(buf)
     local modified   = get_modified()
     local filetype   = get_filetype(buf)
-    local fileformat = get_fileformat(buf)
     local line_col   = get_line_col()
 
     return table.concat({
@@ -108,7 +100,6 @@ statusline = function()
         "%=",
         "%#Block#",
         filetype,
-        fileformat,
         "%#Edge#",
         line_col,
     })
