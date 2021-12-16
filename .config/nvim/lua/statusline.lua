@@ -107,4 +107,3 @@ end
 
 -- set statusline
 vim.opt.statusline = "%!v:lua.statusline()"
-

@@ -4,7 +4,7 @@
 vim.o.termguicolors = true
 
 -- Turn syntax highlighting on
-vim.cmd("syntax on")
+vim.cmd "syntax on"
 
 -- Set colorsheme
 require "colors.base16-tomorrow-night"

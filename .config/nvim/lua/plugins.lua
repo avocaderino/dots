@@ -16,7 +16,8 @@ return require('packer').startup(function()
         "nvim-telescope/telescope.nvim",
         requires = { "nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons" },
         cmd = "Telescope",
-        lock = true,
+        -- If I for some reason don't use the nightly build :(
+        -- commit = "80cdb00"
     }
 
 end)
