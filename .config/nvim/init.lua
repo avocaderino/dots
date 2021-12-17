@@ -10,12 +10,6 @@ require "plugins"       -- lua/plugins.lua
 local o = vim.opt       -- pretty versatile
 local g = vim.g         -- global
 
--- vim.cmd {{{
--- TODO replace asap
-vim.cmd([[
-    filetype plugin indent on
-]])
-
 -- }}}}
 
 -- Inbuilt Plugins {{{
@@ -80,7 +74,7 @@ o.spell         = false     -- ffs, I know how to spell
 o.backup        = false     -- no backups
 o.undofile      = true      -- prevent fuckups
 o.autoread      = false     -- I kinda ❤ that prompt
-o.undoreload    = 10000
+o.undoreload    = 1000
 
 -- }}}
 

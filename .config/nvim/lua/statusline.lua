@@ -35,7 +35,7 @@ local modes = {
     ["r"]  = {"Prompt ",    "P"};
     ["rm"] = {"More ",      "M"};
     ["r?"] = {"Confirm ",   "C"};
-    ["!"]  = {"Shell ",     "S"};
+    ["!"]  = {"Shell ",     "S"};   -- why do I even have this here
     ["t"]  = {"Terminal ",  "T"};
 }
 
@@ -51,7 +51,7 @@ end
 local get_filename = function(buf)
     local filepath = api.nvim_buf_get_name(buf)
     -- Beautiful
-    return string.format(" %.30s ", filepath:match "[^/]+$" or "No Name")
+    return string.format(" %%<%.30s ", filepath:match "[^/]+$" or "No Name")
 end
 
 local get_readonly = function(buf)
@@ -80,28 +80,21 @@ local get_line_col = function()
 end
 
 statusline = function()
-    local win_id = vim.g.statusline_winid
-    local buf = api.nvim_win_get_buf(win_id)
-    --elements
-    local mode       = get_current_mode()
-    local filename   = get_filename(buf)
-    local readonly   = get_readonly(buf)
-    local modified   = get_modified()
-    local filetype   = get_filetype(buf)
-    local line_col   = get_line_col()
-
+    -- current buffer
+    local buf = api.nvim_win_get_buf(vim.g.statusline_winid)
+    -- powaaaah
     return table.concat({
         "%#Edge#",
-        mode,
+        get_current_mode(),
         "%#Inter#",
-        filename,
-        readonly,
-        modified,
+        get_filename(buf),
+        get_readonly(buf),
+        get_modified(),
         "%=",
         "%#Block#",
-        filetype,
+        get_filetype(buf),
         "%#Edge#",
-        line_col,
+        get_line_col(),
     })
 end
 

@@ -1,13 +1,13 @@
 -- Theme
 
 -- Enable true colors
-vim.o.termguicolors = true
+vim.opt.termguicolors = true
 
--- Turn syntax highlighting on
-vim.cmd "syntax on"
+-- I don't need it for some stupid reason
+--vim.cmd "syntax on"
 
 -- Set colorsheme
-require "colors.base16-tomorrow-night"
+require "colors.tomorrow-night"
 
 -- Highlight groups
 vim.cmd([[
