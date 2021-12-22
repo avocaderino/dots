@@ -4,13 +4,10 @@ require "theme"         -- lua/theme.lua
 require "statusline"    -- lua/statusline.lua
 require "plugins"       -- lua/plugins.lua
 
-
 -- Settings
 
 local o = vim.opt       -- pretty versatile
 local g = vim.g         -- global
-
--- }}}}
 
 -- Inbuilt Plugins {{{
 
@@ -22,17 +19,18 @@ g.loaded_2html_plugin = 1
 g.loaded_matchit      = 1
 g.loaded_spec         = 1
 g.loaded_tutor_mode_plugin = 1
---g.loaded_netrw = 1              -- I have telescope now wuhoo, but still keeping it
+--g.loaded_netrw        = 1   -- I have telescope now, but still keeping it
+g.netrw_dirhistmax    = 0   -- netrw history
 
 -- }}}
 
 -- Languages {{{
 
-g.loaded_python_provider = 0    -- python2 is deprecated anyway
-g.loaded_perl_provider  = 0     -- perl
-g.loaded_ruby_provider  = 0     -- ruby
-g.loaded_node_provider  = 0     -- the infamous node
-g.python3_host_prog     = "/usr/bin/python3"
+g.loaded_python_provider  = 0   -- python2 is deprecated anyway
+g.loaded_perl_provider    = 0   -- perl
+g.loaded_ruby_provider    = 0   -- ruby
+g.loaded_node_provider    = 0   -- the infamous node
+g.python3_host_prog       = "/bin/python3"
 g.loaded_spellfile_plugin = 1   -- isn't this technically a language too
 
 -- }}}
@@ -53,6 +51,7 @@ o.laststatus        = 2         -- always enable statusline
 
 -- Editor {{{
 
+o.mouse         = "a"       -- mouse support
 o.shiftwidth    = 4         -- indentation
 o.tabstop       = 4
 o.expandtab     = true      -- maintain peace
@@ -69,34 +68,35 @@ o.spell         = false     -- ffs, I know how to spell
 
 -- }}}
 
--- Backup {{{
+-- File {{{
 
-o.backup        = false     -- no backups
+o.backup        = false     -- livin' on the edge
 o.undofile      = true      -- prevent fuckups
+o.undolevels    = 1000
+o.undoreload    = 10000
 o.autoread      = false     -- I kinda ❤ that prompt
-o.undoreload    = 1000
 
 -- }}}
 
 -- Mappings {{{
 
--- map helper                                                                          
-local map = vim.api.nvim_set_keymap                                                    
-                                                                                       
-map('n', ',', '', {})      -- leader                                                   
-g.mapleader = ","                                                                   
-                                                                                       
-options = { noremap = true, silent = true }                                                           
-map("n", "<leader>,", "``", options)        -- jump to last cursor position            
-map("i", "jj", "<Esc>", options)            -- exit insert mode                        
-map("n", "Y", "y$", options)                -- yank to eol                             
-map("n", "P", "$P", options)                -- past at eol                             
-map('n', 'n', 'nzz', options)               -- centre while movin' up                  
-map('n', 'N', 'Nzz', options)               -- and down, like a roller coastah         
-map("n", "<A-h>", "<C-w>h", options)        -- spl                                     
-map("n", "<A-j>", "<C-w>j", options)        -- it                                      
-map("n", "<A-k>", "<C-w>k", options)        -- wind                                    
-map("n", "<A-l>", "<C-w>l", options)        -- ows                                     
+-- map helper
+local map = vim.api.nvim_set_keymap
+
+map("n", ",", "", {})      -- leader
+g.mapleader = ","
+
+options = { noremap = true, silent = true }
+map("n", "<leader>,", "``", options)        -- jump to last cursor position
+map("i", "jj", "<Esc>", options)            -- exit insert mode
+map("n", "Y", "y$", options)                -- yank to eol
+map("n", "P", "$P", options)                -- past at eol
+map("n", "n", "nzz", options)               -- centre while movin' up
+map("n", "N", "Nzz", options)               -- and down, like a roller coastah
+map("n", "<A-h>", "<C-w>h", options)        -- spl
+map("n", "<A-j>", "<C-w>j", options)        -- it
+map("n", "<A-k>", "<C-w>k", options)        -- wind
+map("n", "<A-l>", "<C-w>l", options)        -- ows
 map("n", "<leader>t", ":Telescope find_files<CR>", options) -- Look into the stars
 
 -- }}}
