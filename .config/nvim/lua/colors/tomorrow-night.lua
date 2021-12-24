@@ -14,7 +14,7 @@ hi clear
 syntax reset
 ]]
 
--- Colors
+-- Colors {{{
 local base00 = "#1d1f21"
 local base01 = "#282a2e"
 local base02 = "#373b41"
@@ -31,8 +31,9 @@ local base0C = "#8abeb7"
 local base0D = "#81a2be"
 local base0E = "#b294bb"
 local base0F = "#a3685a"
+-- }}}
 
--- Vim editor colors
+-- Vim editor colors {{{
 highlight("Normal",         base05, base00, nil, nil)
 highlight("Bold",           nil, nil, "bold", nil)
 highlight("Debug",          base08, nil, nil, nil)
@@ -77,8 +78,9 @@ highlight("PMenuSel",       base01, base05, nil, nil)
 highlight("TabLine",        base03, base01, "none", nil)
 highlight("TabLineFill",    base03, base01, "none", nil)
 highlight("TabLineSel",     base0B, base01, "none", nil)
+-- }}}
 
--- Standard syntax highlighting
+-- Standard syntax highlighting {{{
 highlight("Boolean",        base09, nil, nil, nil)
 highlight("Character",      base08, nil, nil, nil)
 highlight("Comment",        base03, nil, "italic", nil)
@@ -106,10 +108,9 @@ highlight("Tag",            base0A, nil, nil, nil)
 highlight("Todo",           base0A, base01, nil, nil)
 highlight("Type",           base0A, nil, "none", nil)
 highlight("Typedef",        base0A, nil, nil, nil)
+-- }}}
 
----
--- Extra definitions
----
+-- Extra definitions {{{
 
 -- C highlighting
 highlight("cOperator",      base0C, nil, nil, nil)
@@ -241,3 +242,5 @@ highlight("LspDiagnosticsDefaultError",         base08, nil, nil, nil)
 highlight("LspDiagnosticsDefaultWarning",       base0A, nil, nil, nil)
 highlight("LspDiagnosticsDefaultInformation",   base0D, nil, nil, nil)
 highlight("LspDiagnosticsDefaultHint",          base0C, nil, nil, nil)
+
+-- }}}
