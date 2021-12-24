@@ -106,7 +106,8 @@ _G.packer_plugins = {
 time([[Defining packer_plugins]], false)
 local module_lazy_loads = {
   devicons = "nvim-web-devicons",
-  plenary = "plenary.nvim"
+  plenary = "plenary.nvim",
+  telescope = "telescope.nvim"
 }
 local lazy_load_called = {['packer.load'] = true}
 local function lazy_load_module(module_name)
