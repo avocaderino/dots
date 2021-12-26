@@ -20,3 +20,4 @@ hi IncSearch    guifg = None     guibg = #373b41
 hi MatchParen   guifg = None     guibg = #282a2e
 
 ]])
+

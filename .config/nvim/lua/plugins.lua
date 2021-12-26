@@ -2,20 +2,42 @@
 
 return require('packer').startup(function()
 
+    -- packer
     use "wbthomason/packer.nvim"
+
+    -- movement
     use "ggandor/lightspeed.nvim"
 
-    -- Telescope
-    use {"nvim-lua/plenary.nvim", module_pattern = "plenary"}
-    use {"kyazdani42/nvim-web-devicons", module_pattern = "devicons"}
+    -- colorful icons
     use {
-        "nvim-telescope/telescope.nvim",
-        requires = { "nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons" },
-        module_pattern = "telescope",
-        cmd = "Telescope",
-        -- If I for some reason don't use the nightly build
-        --commit = "80cdb00",
-        --lock = true,
+        "kyazdani42/nvim-web-devicons",
+        module_pattern = "devicons"
+    }
+
+    -- search
+    use {
+        -- telescope.nvim
+        {
+            "nvim-telescope/telescope.nvim",
+            requires = { 
+                "nvim-lua/plenary.nvim",
+                "kyazdani42/nvim-web-devicons",
+                "telescope-fzf-native.nvim"
+            },
+            module = "telescope", cmd = "Telescope",
+            config = [[require "modules.telescope"]]
+        },
+        -- plenary.nvim
+        {
+            "nvim-lua/plenary.nvim",
+            module_pattern = "plenary"
+        },
+        -- fzf
+        {
+            "nvim-telescope/telescope-fzf-native.nvim",
+            run = "make"
+        }
     }
 
 end)
+

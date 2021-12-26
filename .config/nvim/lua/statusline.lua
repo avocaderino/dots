@@ -11,8 +11,7 @@ local trunc_width = {
 }
 
 local is_truncated = function(width)
-    local win = vim.g.statusline_winid
-    local current_width = api.nvim_win_get_width(win)
+    local current_width = api.nvim_win_get_width(vim.g.statusline_winid)
     return current_width < width
 end
 
@@ -100,3 +99,4 @@ end
 
 -- set statusline
 vim.opt.statusline = "%!v:lua.statusline()"
+

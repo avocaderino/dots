@@ -82,9 +82,9 @@ set wildmode=list:longest
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 " Undofile
-set undodir=~/.vim/backup
-set undofile
-set undoreload=10000
+"set undodir=~/.vim/backup
+"set undofile
+"set undoreload=10000
 
 
 " Theme ------------------------------------------------------------------ {{{
@@ -93,25 +93,14 @@ set undoreload=10000
 set termguicolors
 
 " Set colorcheme.
-colorscheme base16-tomorrow-night
+"colorscheme base16-tomorrow-night
 
 " Turn syntax highlighting on.
 syntax on
 
 " Highlights
-hi Search   guifg=None    guibg=#282a2e
-hi LineNr   guifg=#969896 guibg=None
-
-" }}}
-
-
-" Plugins ---------------------------------------------------------------- {{{
-
-call plug#begin('~/.local/share/nvim/site/plugged')
-
-
-
-call plug#end()
+hi Search   guibg=#282a2e
+hi LineNr   guifg=#969896
 
 " }}}
 

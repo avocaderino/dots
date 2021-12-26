@@ -244,3 +244,4 @@ highlight("LspDiagnosticsDefaultInformation",   base0D, nil, nil, nil)
 highlight("LspDiagnosticsDefaultHint",          base0C, nil, nil, nil)
 
 -- }}}
+

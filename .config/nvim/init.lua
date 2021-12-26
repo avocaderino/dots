@@ -20,7 +20,6 @@ g.loaded_matchit           = 1
 g.loaded_spec              = 1
 g.loaded_remote_plugins    = 1
 g.loaded_tutor_mode_plugin = 1
---g.loaded_netrw             = 1  -- I have telescope now, but still keeping it
 
 -- }}}
 
@@ -38,20 +37,21 @@ g.loaded_spellfile_plugin = 1   -- isn't this technically a language too
 -- Interface {{{
 
 g.netrw_liststyle   = 3         -- tree view
+o.mouse             = "nvi"     -- mouse support
+o.clipboard         = "unnamedplus"
 o.showcmd           = true      -- show command
 o.history           = 50        -- command history
 o.showmode          = false     -- we have a statusline ffs
 o.ruler             = false     -- long live democracy
 o.wildmenu          = true      -- wildmenu
-o.wildmode          = "list:longest"
-o.wildignore = "*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx"
+o.wildmode          = "longest,list"
+o.wildignore        = "*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.xlsx,*.pptx"
 o.laststatus        = 2         -- always enable statusline
 
 -- }}}
 
 -- Editor {{{
 
-o.mouse         = "a"       -- mouse support
 o.shiftwidth    = 4         -- indentation
 o.tabstop       = 4
 o.expandtab     = true      -- maintain peace
@@ -86,19 +86,24 @@ local map = vim.api.nvim_set_keymap
 map("n", ",", "", {})      -- leader
 g.mapleader = ","
 
-options = { noremap = true, silent = true }
-map("n", "<leader>,", "``", options)        -- jump to last cursor position
-map("i", "jj", "<Esc>", options)            -- exit insert mode
-map("n", "Y", "y$", options)                -- yank to eol
-map("n", "P", "$P", options)                -- past at eol
-map("n", "n", "nzz", options)               -- centre while movin' up
-map("n", "N", "Nzz", options)               -- and down, like a roller coastah
-map("n", "<A-h>", "<C-w>h", options)        -- spl
-map("n", "<A-j>", "<C-w>j", options)        -- it
-map("n", "<A-k>", "<C-w>k", options)        -- wind
-map("n", "<A-l>", "<C-w>l", options)        -- ows
-map("n", "<leader>f", "<cmd>Telescope find_files<CR>", options) -- Look into the stars
-map("n", "<leader>b", "<cmd>Telescope buffers<CR>", options) -- Look beneath the ground
+options = { silent = true }
+
+map("n", "<leader>,", "``", options)    -- jump to last cursor position
+map("i", "jj", "<Esc>", options)        -- exit insert mode
+map("n", "Y", "y$", options)            -- yank to eol
+map("n", "P", "$P", options)            -- past at eol
+map("n", "n", "nzz", options)           -- centre while movin' up
+map("n", "N", "Nzz", options)           -- and down, like a roller coastah
+map("n", "<A-h>", "<C-w>h", options)    -- spl
+map("n", "<A-j>", "<C-w>j", options)    -- it
+map("n", "<A-k>", "<C-w>k", options)    -- wind
+map("n", "<A-l>", "<C-w>l", options)    -- ows
+-- Look into the stars
+map("n", "<leader>f", "<cmd>Telescope find_files<CR>", options)
+-- Look beneath the ground
+map("n", "<leader>b", "<cmd>Telescope buffers<CR>", options)
+-- Look into your eyes
+map("n", "<leader>t", "<cmd>Telescope file_browser<CR>", options)
 
 -- }}}
 

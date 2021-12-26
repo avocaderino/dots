@@ -93,8 +93,14 @@ _G.packer_plugins = {
     path = "/home/sanjay/.local/share/nvim/site/pack/packer/opt/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["telescope-fzf-native.nvim"] = {
+    loaded = true,
+    path = "/home/sanjay/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
+    url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
+  },
   ["telescope.nvim"] = {
     commands = { "Telescope" },
+    config = { 'require "modules.telescope"' },
     loaded = false,
     needs_bufread = true,
     only_cond = false,
@@ -105,9 +111,9 @@ _G.packer_plugins = {
 
 time([[Defining packer_plugins]], false)
 local module_lazy_loads = {
+  ["^telescope"] = "telescope.nvim",
   devicons = "nvim-web-devicons",
-  plenary = "plenary.nvim",
-  telescope = "telescope.nvim"
+  plenary = "plenary.nvim"
 }
 local lazy_load_called = {['packer.load'] = true}
 local function lazy_load_module(module_name)
