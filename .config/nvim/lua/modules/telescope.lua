@@ -5,7 +5,8 @@ require "telescope".setup{
         layout_config = {
             width = 0.95,
             height = 0.95,
-            preview_cutoff = 25
+            preview_cutoff = 25,
+            vertical = {preview_height = 0.20}
         }
     },
     pickers = {
@@ -15,10 +16,7 @@ require "telescope".setup{
         -- }
     },
     extensions = {
-        file_browser = {
-            hidden = true,
-            initial_mode = "n"
-        }
+        file_browser = {hidden = true}
     }
 }
 
