@@ -1,55 +1,27 @@
-require("telescope").setup {
-
+-- telescope.nvim config
+require "telescope".setup{
     defaults = {
-        -- Default configuration for telescope goes here:
         layout_strategy = "flex",
-
         layout_config = {
-            width    = 0.95,
-            height   = 0.95,
-            vertical = { preview_cutoff = 20 }
-        },
-
-        file_ignore_patterns = {
-            -- files
-            "%.jpg", "%.jpeg", "%.png", "%.gif", "%.mkv", "%.docx", "%.pdf",
-            "%.xlsx", "%.pptx", "%.iso", "%.db"
-        },
-
-        history = {"false"}
-    },
-
-    pickers = {
-        -- Default configuration for builtin pickers goes here:
-        file_browser = {
-            hidden = true
-        },
-
-        find_files = {
-            hidden = true,
-
-            file_ignore_patterns = {
-                -- files
-                "%.jpg", "%.jpeg", "%.png", "%.gif", "%.mkv", "%.docx", "%.pdf",
-                "%.xlsx", "%.pptx", "%.iso", "%.db",
-                -- directories
-                "^%.cache/", "[/]+Code/", "[/]*%.git/", "^%.local/", "^%.mozilla/",
-                "^%.vscode/"
-            }
+            width = 0.95,
+            height = 0.95,
+            preview_cutoff = 25
         }
     },
-
+    pickers = {
+        -- picker_name = {
+        --   picker_config_key = value,
+        --   ...
+        -- }
+    },
     extensions = {
-        -- Your extension configuration goes here:
-        fzf = {
-            fuzzy = true,
-            override_generic_sorter = true,
-            override_file_sorter    = true,
-            case_mode = "smart_case"
+        file_browser = {
+            hidden = true,
+            initial_mode = "n"
         }
     }
-
 }
 
--- Extensions
-require("telescope").load_extension "fzf"
+-- extensions
+require "telescope".load_extension "fzf"
+require "telescope".load_extension "file_browser"

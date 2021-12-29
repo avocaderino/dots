@@ -96,9 +96,10 @@ map("n", "<A-h>", "<C-w>h", options)    -- spl
 map("n", "<A-j>", "<C-w>j", options)    -- it
 map("n", "<A-k>", "<C-w>k", options)    -- wind
 map("n", "<A-l>", "<C-w>l", options)    -- ows
-map("n", "<leader>f", "<cmd>Telescope find_files<CR>", options) -- Look into the stars
-map("n", "<leader>b", "<cmd>Telescope buffers<CR>", options)    -- Buffers
-map("n", "<leader>t", "<cmd>lua require('telescope.builtin').file_browser({hidden = true})<CR>", options) -- File browser
+map("n", "<leader>et", "<cmd>Telescope<CR>", options) -- Look into the stars
+map("n", "<leader>f", "<cmd>Telescope find_files<CR>", options) -- Files
+map("n", "<leader>b", "<cmd>Telescope buffers<CR>", options) -- Buffers
+map("n", "<leader>t", "<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>", options) -- File browser
 
 -- }}}
 
