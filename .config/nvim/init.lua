@@ -37,8 +37,6 @@ g.loaded_spellfile_plugin = 1   -- isn't this technically a language too
 -- Interface {{{
 
 g.netrw_liststyle   = 3         -- tree view
-o.mouse             = "nvi"     -- mouse support
-o.clipboard         = "unnamedplus"
 o.showcmd           = true      -- show command
 o.history           = 50        -- command history
 o.showmode          = false     -- we have a statusline ffs
@@ -92,18 +90,12 @@ map("n", "<leader>,", "``", options)    -- jump to last cursor position
 map("i", "jj", "<Esc>", options)        -- exit insert mode
 map("n", "Y", "y$", options)            -- yank to eol
 map("n", "P", "$P", options)            -- past at eol
-map("n", "n", "nzz", options)           -- centre while movin' up
+map("n", "n", "nzz", options)           -- centre movin' up
 map("n", "N", "Nzz", options)           -- and down, like a roller coastah
 map("n", "<A-h>", "<C-w>h", options)    -- spl
 map("n", "<A-j>", "<C-w>j", options)    -- it
 map("n", "<A-k>", "<C-w>k", options)    -- wind
 map("n", "<A-l>", "<C-w>l", options)    -- ows
--- Look into the stars
-map("n", "<leader>f", "<cmd>Telescope find_files<CR>", options)
--- Look beneath the ground
-map("n", "<leader>b", "<cmd>Telescope buffers<CR>", options)
--- Look into your eyes
-map("n", "<leader>t", "<cmd>Telescope file_browser<CR>", options)
 
 -- }}}
 

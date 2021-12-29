@@ -43,14 +43,14 @@ highlight("ErrorMsg",       base08, base00, nil, nil)
 highlight("Exception",      base08, nil, nil, nil)
 highlight("FoldColumn",     base0C, base01, nil, nil)
 highlight("Folded",         base03, base01, nil, nil)
-highlight("IncSearch",      base01, base09, "none", nil)
+--highlight("IncSearch",      base01, base09, "none", nil)
 highlight("Italic",         nil, nil, "italic", nil)
 highlight("Macro",          base08, nil, nil, nil)
-highlight("MatchParen",     nil, base03, nil, nil)
+--highlight("MatchParen",     nil, base03, nil, nil)
 highlight("ModeMsg",        base0B, nil, nil, nil)
 highlight("MoreMsg",        base0B, nil, nil, nil)
 highlight("Question",       base0D, nil, nil, nil)
-highlight("Search",         base01, base0A, nil, nil)
+--highlight("Search",         base01, base0A, nil, nil)
 highlight("Substitute",     base01, base0A, "none", nil)
 highlight("SpecialKey",     base03, nil, nil, nil)
 highlight("TooLong",        base08, nil, nil, nil)
@@ -186,14 +186,14 @@ highlight("jsExceptions",           base0A, nil, nil, nil)
 highlight("jsBuiltins",             base0A, nil, nil, nil)
 
 -- Mail highlighting
-highlight("mailQuoted1",    base0A, nil, nil, nil)
-highlight("mailQuoted2",    base0B, nil, nil, nil)
-highlight("mailQuoted3",    base0E, nil, nil, nil)
-highlight("mailQuoted4",    base0C, nil, nil, nil)
-highlight("mailQuoted5",    base0D, nil, nil, nil)
-highlight("mailQuoted6",    base0A, nil, nil, nil)
-highlight("mailURL",        base0D, nil, nil, nil)
-highlight("mailEmail",      base0D, nil, nil, nil)
+--highlight("mailQuoted1",    base0A, nil, nil, nil)
+--highlight("mailQuoted2",    base0B, nil, nil, nil)
+--highlight("mailQuoted3",    base0E, nil, nil, nil)
+--highlight("mailQuoted4",    base0C, nil, nil, nil)
+--highlight("mailQuoted5",    base0D, nil, nil, nil)
+--highlight("mailQuoted6",    base0A, nil, nil, nil)
+--highlight("mailURL",        base0D, nil, nil, nil)
+--highlight("mailEmail",      base0D, nil, nil, nil)
 
 -- Markdown highlighting
 highlight("markdownCode",               base0B, nil, nil, nil)
@@ -229,19 +229,19 @@ highlight("sassMixing",     base0E, nil, nil, nil)
 highlight("sassMixinName",  base0D, nil, nil, nil)
 
 -- Spelling highlighting
-highlight("SpellBad",       nil, nil, "undercurl", base08)
-highlight("SpellLocal",     nil, nil, "undercurl", base0C)
-highlight("SpellCap",       nil, nil, "undercurl", base0D)
-highlight("SpellRare",      nil, nil, "undercurl", base0E)
+--highlight("SpellBad",       nil, nil, "undercurl", base08)
+--highlight("SpellLocal",     nil, nil, "undercurl", base0C)
+--highlight("SpellCap",       nil, nil, "undercurl", base0D)
+--highlight("SpellRare",      nil, nil, "undercurl", base0E)
 
 -- Java highlighting
 highlight("javaOperator",   base0D, nil, nil, nil)
 
 -- LspDiagnostic base highlight group
-highlight("LspDiagnosticsDefaultError",         base08, nil, nil, nil)
-highlight("LspDiagnosticsDefaultWarning",       base0A, nil, nil, nil)
-highlight("LspDiagnosticsDefaultInformation",   base0D, nil, nil, nil)
-highlight("LspDiagnosticsDefaultHint",          base0C, nil, nil, nil)
+--highlight("LspDiagnosticsDefaultError",         base08, nil, nil, nil)
+--highlight("LspDiagnosticsDefaultWarning",       base0A, nil, nil, nil)
+--highlight("LspDiagnosticsDefaultInformation",   base0D, nil, nil, nil)
+--highlight("LspDiagnosticsDefaultHint",          base0C, nil, nil, nil)
 
 -- }}}
 
