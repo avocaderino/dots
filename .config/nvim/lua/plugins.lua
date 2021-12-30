@@ -8,6 +8,9 @@ return require("packer").startup(function()
   -- movement
   use "ggandor/lightspeed.nvim"
 
+  -- icons
+  use {"kyazdani42/nvim-web-devicons", module = "nvim-web-devicons"},
+
   -- telescope.nvim
   use {
     {
@@ -24,11 +27,7 @@ return require("packer").startup(function()
       "nvim-lua/plenary.nvim",
       module = "plenary"
     },
-    {
-      "kyazdani42/nvim-web-devicons",
-      module = "nvim-web-devicons"
-    },
-      "nvim-telescope/telescope-file-browser.nvim",
+    "nvim-telescope/telescope-file-browser.nvim",
     {
       "nvim-telescope/telescope-fzf-native.nvim",
       run = "make"
