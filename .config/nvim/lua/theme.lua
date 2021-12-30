@@ -33,10 +33,5 @@ hi LightspeedShortcut        guifg = #ffffff  guibg = #d84c54  gui = bold,underl
 
 -- Light
 if (os.getenv("ALACRITTY_LOG")) then require "colors.tomorrow"
-    vim.cmd [[
-    hi link Edge  Statusline
-    hi link Inter Statusline
-    hi link Block Statusline
-    ]]
-    -- TODO configure lightspeed
+  -- TODO configure lightspeed
 end

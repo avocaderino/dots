@@ -43,50 +43,6 @@ let s:cterm06        = "21"
 let s:cterm09        = "16"
 let s:cterm0F        = "17"
 
-" Neovim terminal colours
-if has("nvim")
-  let g:terminal_color_0 =  "#ffffff"
-  let g:terminal_color_1 =  "#c82829"
-  let g:terminal_color_2 =  "#718c00"
-  let g:terminal_color_3 =  "#eab700"
-  let g:terminal_color_4 =  "#4271ae"
-  let g:terminal_color_5 =  "#8959a8"
-  let g:terminal_color_6 =  "#3e999f"
-  let g:terminal_color_7 =  "#4d4d4c"
-  let g:terminal_color_8 =  "#8e908c"
-  let g:terminal_color_9 =  "#c82829"
-  let g:terminal_color_10 = "#718c00"
-  let g:terminal_color_11 = "#eab700"
-  let g:terminal_color_12 = "#4271ae"
-  let g:terminal_color_13 = "#8959a8"
-  let g:terminal_color_14 = "#3e999f"
-  let g:terminal_color_15 = "#1d1f21"
-  let g:terminal_color_background = g:terminal_color_0
-  let g:terminal_color_foreground = g:terminal_color_5
-  if &background == "light"
-    let g:terminal_color_background = g:terminal_color_7
-    let g:terminal_color_foreground = g:terminal_color_2
-  endif
-elseif has("terminal")
-  let g:terminal_ansi_colors = [
-        \ "#ffffff",
-        \ "#c82829",
-        \ "#718c00",
-        \ "#eab700",
-        \ "#4271ae",
-        \ "#8959a8",
-        \ "#3e999f",
-        \ "#4d4d4c",
-        \ "#8e908c",
-        \"#c82829",
-        \ "#718c00",
-        \ "#eab700",
-        \ "#4271ae",
-        \ "#8959a8",
-        \ "#3e999f",
-        \ "#1d1f21",
-        \ ]
-endif
 
 " Theme setup
 hi clear

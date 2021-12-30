@@ -2,23 +2,23 @@
 
 return require("packer").startup(function()
 
-  -- plugin manager
+  -- packer
   use "wbthomason/packer.nvim"
 
   -- movement
   use "ggandor/lightspeed.nvim"
 
   -- icons
-  use {"kyazdani42/nvim-web-devicons", module = "nvim-web-devicons"},
+  use {"kyazdani42/nvim-web-devicons", module = "nvim-web-devicons"}
 
-  -- telescope.nvim
+  -- telscope.nvim
   use {
     {
       "nvim-telescope/telescope.nvim",
       requires = {
         "nvim-lua/plenary.nvim",
-        "nvim-telescope/telescope-file-browser.nvim",
-        "nvim-telescope/telescope-fzf-native.nvim"
+        "telescope-file-browser.nvim",
+        "telescope-fzf-native.nvim"
       },
       module = "telescope", cmd = "Telescope",
       config = [[require "modules.telescope"]]
@@ -35,4 +35,3 @@ return require("packer").startup(function()
   }
 
 end)
-

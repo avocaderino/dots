@@ -74,11 +74,6 @@ _G.packer_plugins = {
     path = "/home/sanjay/.local/share/nvim/site/pack/packer/start/lightspeed.nvim",
     url = "https://github.com/ggandor/lightspeed.nvim"
   },
-  ["lualine.nvim"] = {
-    loaded = true,
-    path = "/home/sanjay/.local/share/nvim/site/pack/packer/start/lualine.nvim",
-    url = "https://github.com/nvim-lualine/lualine.nvim"
-  },
   ["nvim-web-devicons"] = {
     loaded = false,
     needs_bufread = false,

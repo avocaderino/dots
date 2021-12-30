@@ -103,3 +103,11 @@ map("n", "<leader>t", "<cmd>lua require 'telescope'.extensions.file_browser.file
 
 -- }}}
 
+-- "Scripts" {{{
+
+if vim.bo.filetype == "lua" or "html" or "css" then
+  o.shiftwidth = 2; o.tabstop = 2
+end
+
+-- }}}
+
