@@ -196,10 +196,10 @@ highlight("jsBuiltins",          base0A, nil, nil, nil)
 --highlight("mailEmail",   base0D, nil, nil, nil)
 
 -- Markdown highlighting
-highlight("markdownCode",             base0B, nil, nil, nil)
+highlight("markdownCode",             base0B, nil,    nil, nil)
 highlight("markdownError",            base05, base00, nil, nil)
-highlight("markdownCodeBlock",        base0B, nil, nil, nil)
-highlight("markdownHeadingDelimiter", base0D, nil, nil, nil)
+highlight("markdownCodeBlock",        base0B, nil,    nil, nil)
+highlight("markdownHeadingDelimiter", base0D, nil,    nil, nil)
 
 -- PHP highlighting
 highlight("phpMemberSelector", base05, nil, nil, nil)
