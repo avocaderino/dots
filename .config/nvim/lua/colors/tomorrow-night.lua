@@ -1,247 +1,288 @@
--- base16 Tomorrow Night color scheme
+-- base16-vim (https://github.com/chriskempson/base16-vim)
+-- by Chris Kempson (http://chriskempson.com)
+-- Tomorrow Night scheme by Chris Kempson (http://chriskempson.com)
 
-local highlight = function(hlgroup, guifg, guibg, gui, guisp)
-  local cmd = {'hi', hlgroup}
-  if guifg then table.insert(cmd, 'guifg='..guifg) end
-  if guibg then table.insert(cmd, 'guibg='..guibg) end
-  if gui then table.insert(cmd, 'gui='..gui) end
-  if guisp then table.insert(cmd, 'guisp='..guisp) end
-  vim.cmd(table.concat(cmd, ' '))
-end
+-- GUI color definitions
+local gui00        = '#1d1f21'
+local gui01        = '#282a2e'
+local gui02        = '#373b41'
+local gui03        = '#969896'
+local gui04        = '#b4b7b4'
+local gui05        = '#c5c8c6'
+local gui06        = '#e0e0e0'
+local gui07        = '#ffffff'
+local gui08        = '#cc6666'
+local gui09        = '#de935f'
+local gui0A        = '#f0c674'
+local gui0B        = '#b5bd68'
+local gui0C        = '#8abeb7'
+local gui0D        = '#81a2be'
+local gui0E        = '#b294bb'
+local gui0F        = '#a3685a'
 
+
+-- Terminal color definitions
+local cterm00        = '00'
+local cterm03        = '08'
+local cterm05        = '07'
+local cterm07        = '15'
+local cterm08        = '01'
+local cterm0A        = '03'
+local cterm0B        = '02'
+local cterm0C        = '06'
+local cterm0D        = '04'
+local cterm0E        = '05'
+local cterm01        = '18'
+local cterm02        = '19'
+local cterm04        = '20'
+local cterm06        = '21'
+local cterm09        = '16'
+local cterm0F        = '17'
+
+
+-- Theme setup
 vim.cmd [[
 hi clear
 syntax reset
 ]]
+vim.g.colors_name = 'tomorrow-night'
 
--- Colors {{{
-local base00 = "#1d1f21"
-local base01 = "#282a2e"
-local base02 = "#373b41"
-local base03 = "#969896"
-local base04 = "#b4b7b4"
-local base05 = "#c5c8c6"
-local base06 = "#e0e0e0"
-local base07 = "#ffffff"
-local base08 = "#cc6666"
-local base09 = "#de935f"
-local base0A = "#f0c674"
-local base0B = "#b5bd68"
-local base0C = "#8abeb7"
-local base0D = "#81a2be"
-local base0E = "#b294bb"
-local base0F = "#a3685a"
--- }}}
+-- Highlighting function
+-- Optional variables are attributes and guisp
+local function hi(hlgroup, guifg, guibg, ctermfg, ctermbg, gui, guisp)
+  local cmd = {'hi', hlgroup}
+  if guifg ~= '' then table.insert(cmd, 'guifg=' .. guifg) end
+  if guibg ~= '' then table.insert(cmd, 'guibg=' .. guibg) end
+  if ctermfg ~= '' then table.insert(cmd, 'ctermfg=' .. ctermfg) end
+  if ctermbg ~= '' then table.insert(cmd, 'ctermbg=' .. ctermbg) end
+  if gui ~= '' then table.insert(cmd, 'gui=' .. gui) end
+  if guisp ~= '' then table.insert(cmd, 'guisp=' .. guisp) end
+  vim.cmd(table.concat(cmd, ' '))
+end
 
--- Vim editor colors {{{
-highlight("Normal",       base05, base00, nil,      nil)
-highlight("Bold",         nil,    nil,    "bold",   nil)
-highlight("Debug",        base08, nil,    nil,      nil)
-highlight("Directory",    base0D, nil,    nil,      nil)
-highlight("Error",        base00, base08, nil,      nil)
-highlight("ErrorMsg",     base08, base00, nil,      nil)
-highlight("Exception",    base08, nil,    nil,      nil)
-highlight("FoldColumn",   base0C, base01, nil,      nil)
-highlight("Folded",       base03, base01, nil,      nil)
---highlight("IncSearch",    base01, base09, "none",   nil)
-highlight("Italic",       nil,    nil,    "italic", nil)
-highlight("Macro",        base08, nil,    nil,      nil)
---highlight("MatchParen",   nil,    base03, nil,      nil)
-highlight("ModeMsg",      base0B, nil,    nil,      nil)
-highlight("MoreMsg",      base0B, nil,    nil,      nil)
-highlight("Question",     base0D, nil,    nil,      nil)
---highlight("Search",       base01, base0A, nil,      nil)
-highlight("Substitute",   base01, base0A, "none",   nil)
-highlight("SpecialKey",   base03, nil,    nil,      nil)
-highlight("TooLong",      base08, nil,    nil,      nil)
-highlight("Underlined",   base08, nil,    nil,      nil)
-highlight("Visual",       nil,    base02, nil,      nil)
-highlight("VisualNOS",    base08, nil,    nil,      nil)
-highlight("WarningMsg",   base08, nil,    nil,      nil)
-highlight("WildMenu",     base08, base0A, nil,      nil)
-highlight("Title",        base0D, nil,    "none",   nil)
-highlight("Conceal",      base0D, base00, nil,      nil)
-highlight("Cursor",       base00, base05, nil,      nil)
-highlight("NonText",      base03, nil,    nil,      nil)
-highlight("LineNr",       base03, "none", nil,      nil)
-highlight("SignColumn",   base03, "none", nil,      nil)
-highlight("StatusLine",   base04, base02, "none",   nil)
-highlight("StatusLineNC", base03, base01, "none",   nil)
-highlight("VertSplit",    base02, "none", "none",   nil)
-highlight("ColorColumn",  nil,    base01, "none",   nil)
-highlight("CursorColumn", nil,    base01, "none",   nil)
-highlight("CursorLine",   nil,    base01, "none",   nil)
-highlight("CursorLineNr", base04, "none", nil,      nil)
-highlight("QuickFixLine", nil,    base01, "none",   nil)
-highlight("PMenu",        base05, base01, "none",   nil)
-highlight("PMenuSel",     base01, base05, nil,      nil)
-highlight("TabLine",      base03, base01, "none",   nil)
-highlight("TabLineFill",  base03, base01, "none",   nil)
-highlight("TabLineSel",   base0B, base01, "none",   nil)
--- }}}
+-- Vim editor colors
+hi('Normal',        gui05, gui00, cterm05, cterm00, '', '')
+hi('Bold',          '', '', '', '', 'bold', '')
+hi('Debug',         gui08, '', cterm08, '', '', '')
+hi('Directory',     gui0D, '', cterm0D, '', '', '')
+hi('Error',         gui00, gui08, cterm00, cterm08, '', '')
+hi('ErrorMsg',      gui08, gui00, cterm08, cterm00, '', '')
+hi('Exception',     gui08, '', cterm08, '', '', '')
+hi('FoldColumn',    gui0C, gui01, cterm0C, cterm01, '', '')
+hi('Folded',        gui03, gui01, cterm03, cterm01, '', '')
+hi('IncSearch',     gui01, gui09, cterm01, cterm09, 'none', '')
+hi('Italic',        '', '', '', '', 'none', '')
+hi('Macro',         gui08, '', cterm08, '', '', '')
+hi('MatchParen',    '', gui03, '', cterm03,  '', '')
+hi('ModeMsg',       gui0B, '', cterm0B, '', '', '')
+hi('MoreMsg',       gui0B, '', cterm0B, '', '', '')
+hi('Question',      gui0D, '', cterm0D, '', '', '')
+hi('Search',        gui01, gui0A, cterm01, cterm0A,  '', '')
+hi('Substitute',    gui01, gui0A, cterm01, cterm0A, 'none', '')
+hi('SpecialKey',    gui03, '', cterm03, '', '', '')
+hi('TooLong',       gui08, '', cterm08, '', '', '')
+hi('Underlined',    gui08, '', cterm08, '', '', '')
+hi('Visual',        '', gui02, '', cterm02, '', '')
+hi('VisualNOS',     gui08, '', cterm08, '', '', '')
+hi('WarningMsg',    gui08, '', cterm08, '', '', '')
+hi('WildMenu',      gui08, gui0A, cterm08, '', '', '')
+hi('Title',         gui0D, '', cterm0D, '', 'none', '')
+hi('Conceal',       gui0D, gui00, cterm0D, cterm00, '', '')
+hi('Cursor',        gui00, gui05, cterm00, cterm05, '', '')
+hi('NonText',       gui03, '', cterm03, '', '', '')
+hi('LineNr',        gui03, gui01, cterm03, cterm01, '', '')
+hi('SignColumn',    gui03, gui01, cterm03, cterm01, '', '')
+hi('StatusLine',    gui04, gui02, cterm04, cterm02, 'none', '')
+hi('StatusLineNC',  gui03, gui01, cterm03, cterm01, 'none', '')
+hi('VertSplit',     gui02, gui02, cterm02, cterm02, 'none', '')
+hi('ColorColumn',   '', gui01, '', cterm01, 'none', '')
+hi('CursorColumn',  '', gui01, '', cterm01, 'none', '')
+hi('CursorLine',    '', gui01, '', cterm01, 'none', '')
+hi('CursorLineNr',  gui04, gui01, cterm04, cterm01, '', '')
+hi('QuickFixLine',  '', gui01, '', cterm01, 'none', '')
+hi('PMenu',         gui05, gui01, cterm05, cterm01, 'none', '')
+hi('PMenuSel',      gui01, gui05, cterm01, cterm05, '', '')
+hi('TabLine',       gui03, gui01, cterm03, cterm01, 'none', '')
+hi('TabLineFill',   gui03, gui01, cterm03, cterm01, 'none', '')
+hi('TabLineSel',    gui0B, gui01, cterm0B, cterm01, 'none', '')
 
--- Standard syntax highlighting {{{
-highlight("Boolean",      base09, nil,    nil,      nil)
-highlight("Character",    base08, nil,    nil,      nil)
-highlight("Comment",      base03, nil,    "italic", nil)
-highlight("Conditional",  base0E, nil,    nil,      nil)
-highlight("Constant",     base09, nil,    nil,      nil)
-highlight("Define",       base0E, nil,    "none",   nil)
-highlight("Delimiter",    base0F, nil,    nil,      nil)
-highlight("Float",        base09, nil,    nil,      nil)
-highlight("Function",     base0D, nil,    nil,      nil)
-highlight("Identifier",   base08, nil,    "none",   nil)
-highlight("Include",      base0D, nil,    nil,      nil)
-highlight("Keyword",      base0E, nil,    nil,      nil)
-highlight("Label",        base0A, nil,    nil,      nil)
-highlight("Number",       base09, nil,    nil,      nil)
-highlight("Operator",     base05, nil,    "none",   nil)
-highlight("PreProc",      base0A, nil,    nil,      nil)
-highlight("Repeat",       base0A, nil,    nil,      nil)
-highlight("Special",      base0C, nil,    nil,      nil)
-highlight("SpecialChar",  base0F, nil,    nil,      nil)
-highlight("Statement",    base08, nil,    nil,      nil)
-highlight("StorageClass", base0A, nil,    nil,      nil)
-highlight("String",       base0B, nil,    nil,      nil)
-highlight("Structure",    base0E, nil,    nil,      nil)
-highlight("Tag",          base0A, nil,    nil,      nil)
-highlight("Todo",         base0A, base01, nil,      nil)
-highlight("Type",         base0A, nil,    "none",   nil)
-highlight("Typedef",      base0A, nil,    nil,      nil)
--- }}}
-
--- Extra definitions {{{
+-- Standard syntax highlighting
+hi('Boolean',      gui09, '', cterm09, '', '', '')
+hi('Character',    gui08, '', cterm08, '', '', '')
+hi('Comment',      gui03, '', cterm03, '', '', '')
+hi('Conditional',  gui0E, '', cterm0E, '', '', '')
+hi('Constant',     gui09, '', cterm09, '', '', '')
+hi('Define',       gui0E, '', cterm0E, '', 'none', '')
+hi('Delimiter',    gui0F, '', cterm0F, '', '', '')
+hi('Float',        gui09, '', cterm09, '', '', '')
+hi('Function',     gui0D, '', cterm0D, '', '', '')
+hi('Identifier',   gui08, '', cterm08, '', 'none', '')
+hi('Include',      gui0D, '', cterm0D, '', '', '')
+hi('Keyword',      gui0E, '', cterm0E, '', '', '')
+hi('Label',        gui0A, '', cterm0A, '', '', '')
+hi('Number',       gui09, '', cterm09, '', '', '')
+hi('Operator',     gui05, '', cterm05, '', 'none', '')
+hi('PreProc',      gui0A, '', cterm0A, '', '', '')
+hi('Repeat',       gui0A, '', cterm0A, '', '', '')
+hi('Special',      gui0C, '', cterm0C, '', '', '')
+hi('SpecialChar',  gui0F, '', cterm0F, '', '', '')
+hi('Statement',    gui08, '', cterm08, '', '', '')
+hi('StorageClass', gui0A, '', cterm0A, '', '', '')
+hi('String',       gui0B, '', cterm0B, '', '', '')
+hi('Structure',    gui0E, '', cterm0E, '', '', '')
+hi('Tag',          gui0A, '', cterm0A, '', '', '')
+hi('Todo',         gui0A, gui01, cterm0A, cterm01, '', '')
+hi('Type',         gui0A, '', cterm0A, '', 'none', '')
+hi('Typedef',      gui0A, '', cterm0A, '', '', '')
 
 -- C highlighting
-highlight("cOperator",  base0C, nil, nil, nil)
-highlight("cPreCondit", base0E, nil, nil, nil)
+hi('cOperator',   gui0C, '', cterm0C, '', '', '')
+hi('cPreCondit',  gui0E, '', cterm0E, '', '', '')
 
 -- C# highlighting
-highlight("csClass",                base0A, nil, nil, nil)
-highlight("csAttribute",            base0A, nil, nil, nil)
-highlight("csModifier",             base0E, nil, nil, nil)
-highlight("csType",                 base08, nil, nil, nil)
-highlight("csUnspecifiedStatement", base0D, nil, nil, nil)
-highlight("csContextualStatement",  base0E, nil, nil, nil)
-highlight("csNewDecleration",       base08, nil, nil, nil)
+hi('csClass',                 gui0A, '', cterm0A, '', '', '')
+hi('csAttribute',             gui0A, '', cterm0A, '', '', '')
+hi('csModifier',              gui0E, '', cterm0E, '', '', '')
+hi('csType',                  gui08, '', cterm08, '', '', '')
+hi('csUnspecifiedStatement',  gui0D, '', cterm0D, '', '', '')
+hi('csContextualStatement',   gui0E, '', cterm0E, '', '', '')
+hi('csNewDecleration',        gui08, '', cterm08, '', '', '')
 
 -- CSS highlighting
-highlight("cssBraces",    base05, nil, nil, nil)
-highlight("cssClassName", base0E, nil, nil, nil)
-highlight("cssColor",     base0C, nil, nil, nil)
+hi('cssBraces',      gui05, '', cterm05, '', '', '')
+hi('cssClassName',   gui0E, '', cterm0E, '', '', '')
+hi('cssColor',       gui0C, '', cterm0C, '', '', '')
 
 -- Diff highlighting
-highlight("DiffAdd",     base0B, base01, nil, nil)
-highlight("DiffChange",  base03, base01, nil, nil)
-highlight("DiffDelete",  base08, base01, nil, nil)
-highlight("DiffText",    base0D, base01, nil, nil)
-highlight("DiffAdded",   base0B, base00, nil, nil)
-highlight("DiffFile",    base08, base00, nil, nil)
-highlight("DiffNewFile", base0B, base00, nil, nil)
-highlight("DiffLine",    base0D, base00, nil, nil)
-highlight("DiffRemoved", base08, base00, nil, nil)
+hi('DiffAdd',      gui0B, gui01,  cterm0B, cterm01, '', '')
+hi('DiffChange',   gui03, gui01,  cterm03, cterm01, '', '')
+hi('DiffDelete',   gui08, gui01,  cterm08, cterm01, '', '')
+hi('DiffText',     gui0D, gui01,  cterm0D, cterm01, '', '')
+hi('DiffAdded',    gui0B, gui00,  cterm0B, cterm00, '', '')
+hi('DiffFile',     gui08, gui00,  cterm08, cterm00, '', '')
+hi('DiffNewFile',  gui0B, gui00,  cterm0B, cterm00, '', '')
+hi('DiffLine',     gui0D, gui00,  cterm0D, cterm00, '', '')
+hi('DiffRemoved',  gui08, gui00,  cterm08, cterm00, '', '')
 
 -- Git highlighting
-highlight("gitcommitOverflow",      base08, nil, nil,    nil)
-highlight("gitcommitSummary",       base0B, nil, nil,    nil)
-highlight("gitcommitComment",       base03, nil, nil,    nil)
-highlight("gitcommitUntracked",     base03, nil, nil,    nil)
-highlight("gitcommitDiscarded",     base03, nil, nil,    nil)
-highlight("gitcommitSelected",      base03, nil, nil,    nil)
-highlight("gitcommitHeader",        base0E, nil, nil,    nil)
-highlight("gitcommitSelectedType",  base0D, nil, nil,    nil)
-highlight("gitcommitUnmergedType",  base0D, nil, nil,    nil)
-highlight("gitcommitDiscardedType", base0D, nil, nil,    nil)
-highlight("gitcommitBranch",        base09, nil, "bold", nil)
-highlight("gitcommitUntrackedFile", base0A, nil, nil,    nil)
-highlight("gitcommitUnmergedFile",  base08, nil, "bold", nil)
-highlight("gitcommitDiscardedFile", base08, nil, "bold", nil)
-highlight("gitcommitSelectedFile",  base0B, nil, "bold", nil)
+hi('gitcommitOverflow',       gui08, '', cterm08, '', '', '')
+hi('gitcommitSummary',        gui0B, '', cterm0B, '', '', '')
+hi('gitcommitComment',        gui03, '', cterm03, '', '', '')
+hi('gitcommitUntracked',      gui03, '', cterm03, '', '', '')
+hi('gitcommitDiscarded',      gui03, '', cterm03, '', '', '')
+hi('gitcommitSelected',       gui03, '', cterm03, '', '', '')
+hi('gitcommitHeader',         gui0E, '', cterm0E, '', '', '')
+hi('gitcommitSelectedType',   gui0D, '', cterm0D, '', '', '')
+hi('gitcommitUnmergedType',   gui0D, '', cterm0D, '', '', '')
+hi('gitcommitDiscardedType',  gui0D, '', cterm0D, '', '', '')
+hi('gitcommitBranch',         gui09, '', cterm09, '', 'bold', '')
+hi('gitcommitUntrackedFile',  gui0A, '', cterm0A, '', '', '')
+hi('gitcommitUnmergedFile',   gui08, '', cterm08, '', 'bold', '')
+hi('gitcommitDiscardedFile',  gui08, '', cterm08, '', 'bold', '')
+hi('gitcommitSelectedFile',   gui0B, '', cterm0B, '', 'bold', '')
+
+-- GitGutter highlighting
+hi('GitGutterAdd',     gui0B, gui01, cterm0B, cterm01, '', '')
+hi('GitGutterChange',  gui0D, gui01, cterm0D, cterm01, '', '')
+hi('GitGutterDelete',  gui08, gui01, cterm08, cterm01, '', '')
+hi('GitGutterChangeDelete',  gui0E, gui01, cterm0E, cterm01, '', '')
 
 -- HTML highlighting
-highlight("htmlBold",   base0A, nil, nil, nil)
-highlight("htmlItalic", base0E, nil, nil, nil)
-highlight("htmlEndTag", base05, nil, nil, nil)
-highlight("htmlTag",    base05, nil, nil, nil)
+hi('htmlBold',    gui0A, '', cterm0A, '', '', '')
+hi('htmlItalic',  gui0E, '', cterm0E, '', '', '')
+hi('htmlEndTag',  gui05, '', cterm05, '', '', '')
+hi('htmlTag',     gui05, '', cterm05, '', '', '')
 
 -- JavaScript highlighting
-highlight("javaScript",          base05, nil, nil, nil)
-highlight("javaScriptBraces",    base05, nil, nil, nil)
-highlight("javaScriptNumber",    base09, nil, nil, nil)
+hi('javaScript',        gui05, '', cterm05, '', '', '')
+hi('javaScriptBraces',  gui05, '', cterm05, '', '', '')
+hi('javaScriptNumber',  gui09, '', cterm09, '', '', '')
 -- pangloss/vim-javascript highlighting
-highlight("jsOperator",          base0D, nil, nil, nil)
-highlight("jsStatement",         base0E, nil, nil, nil)
-highlight("jsReturn",            base0E, nil, nil, nil)
-highlight("jsThis",              base08, nil, nil, nil)
-highlight("jsClassDefinition",   base0A, nil, nil, nil)
-highlight("jsFunction",          base0E, nil, nil, nil)
-highlight("jsFuncName",          base0D, nil, nil, nil)
-highlight("jsFuncCall",          base0D, nil, nil, nil)
-highlight("jsClassFuncName",     base0D, nil, nil, nil)
-highlight("jsClassMethodType",   base0E, nil, nil, nil)
-highlight("jsRegexpString",      base0C, nil, nil, nil)
-highlight("jsGlobalObjects",     base0A, nil, nil, nil)
-highlight("jsGlobalNodeObjects", base0A, nil, nil, nil)
-highlight("jsExceptions",        base0A, nil, nil, nil)
-highlight("jsBuiltins",          base0A, nil, nil, nil)
+hi('jsOperator',          gui0D, '', cterm0D, '', '', '')
+hi('jsStatement',         gui0E, '', cterm0E, '', '', '')
+hi('jsReturn',            gui0E, '', cterm0E, '', '', '')
+hi('jsThis',              gui08, '', cterm08, '', '', '')
+hi('jsClassDefinition',   gui0A, '', cterm0A, '', '', '')
+hi('jsFunction',          gui0E, '', cterm0E, '', '', '')
+hi('jsFuncName',          gui0D, '', cterm0D, '', '', '')
+hi('jsFuncCall',          gui0D, '', cterm0D, '', '', '')
+hi('jsClassFuncName',     gui0D, '', cterm0D, '', '', '')
+hi('jsClassMethodType',   gui0E, '', cterm0E, '', '', '')
+hi('jsRegexpString',      gui0C, '', cterm0C, '', '', '')
+hi('jsGlobalObjects',     gui0A, '', cterm0A, '', '', '')
+hi('jsGlobalNodeObjects', gui0A, '', cterm0A, '', '', '')
+hi('jsExceptions',        gui0A, '', cterm0A, '', '', '')
+hi('jsBuiltins',          gui0A, '', cterm0A, '', '', '')
 
 -- Mail highlighting
---highlight("mailQuoted1", base0A, nil, nil, nil)
---highlight("mailQuoted2", base0B, nil, nil, nil)
---highlight("mailQuoted3", base0E, nil, nil, nil)
---highlight("mailQuoted4", base0C, nil, nil, nil)
---highlight("mailQuoted5", base0D, nil, nil, nil)
---highlight("mailQuoted6", base0A, nil, nil, nil)
---highlight("mailURL",     base0D, nil, nil, nil)
---highlight("mailEmail",   base0D, nil, nil, nil)
+hi('mailQuoted1',  gui0A, '', cterm0A, '', '', '')
+hi('mailQuoted2',  gui0B, '', cterm0B, '', '', '')
+hi('mailQuoted3',  gui0E, '', cterm0E, '', '', '')
+hi('mailQuoted4',  gui0C, '', cterm0C, '', '', '')
+hi('mailQuoted5',  gui0D, '', cterm0D, '', '', '')
+hi('mailQuoted6',  gui0A, '', cterm0A, '', '', '')
+hi('mailURL',      gui0D, '', cterm0D, '', '', '')
+hi('mailEmail',    gui0D, '', cterm0D, '', '', '')
 
 -- Markdown highlighting
-highlight("markdownCode",             base0B, nil,    nil, nil)
-highlight("markdownError",            base05, base00, nil, nil)
-highlight("markdownCodeBlock",        base0B, nil,    nil, nil)
-highlight("markdownHeadingDelimiter", base0D, nil,    nil, nil)
+hi('markdownCode',              gui0B, '', cterm0B, '', '', '')
+hi('markdownError',             gui05, gui00, cterm05, cterm00, '', '')
+hi('markdownCodeBlock',         gui0B, '', cterm0B, '', '', '')
+hi('markdownHeadingDelimiter',  gui0D, '', cterm0D, '', '', '')
+
+-- NERDTree highlighting
+hi('NERDTreeDirSlash',  gui0D, '', cterm0D, '', '', '')
+hi('NERDTreeExecFile',  gui05, '', cterm05, '', '', '')
 
 -- PHP highlighting
-highlight("phpMemberSelector", base05, nil, nil, nil)
-highlight("phpComparison",     base05, nil, nil, nil)
-highlight("phpParent",         base05, nil, nil, nil)
-highlight("phpMethodsVar",     base0C, nil, nil, nil)
+hi('phpMemberSelector',  gui05, '', cterm05, '', '', '')
+hi('phpComparison',      gui05, '', cterm05, '', '', '')
+hi('phpParent',          gui05, '', cterm05, '', '', '')
+hi('phpMethodsVar',      gui0C, '', cterm0C, '', '', '')
 
 -- Python highlighting
-highlight("pythonOperator",  base0E, nil, nil, nil)
-highlight("pythonRepeat",    base0E, nil, nil, nil)
-highlight("pythonInclude",   base0E, nil, nil, nil)
-highlight("pythonStatement", base0E, nil, nil, nil)
+hi('pythonOperator',  gui0E, '', cterm0E, '', '', '')
+hi('pythonRepeat',    gui0E, '', cterm0E, '', '', '')
+hi('pythonInclude',   gui0E, '', cterm0E, '', '', '')
+hi('pythonStatement', gui0E, '', cterm0E, '', '', '')
 
 -- Ruby highlighting
-highlight("rubyAttribute",              base0D, nil, nil, nil)
-highlight("rubyConstant",               base0A, nil, nil, nil)
-highlight("rubyInterpolationDelimiter", base0F, nil, nil, nil)
-highlight("rubyRegexp",                 base0C, nil, nil, nil)
-highlight("rubySymbol",                 base0B, nil, nil, nil)
-highlight("rubyStringDelimiter",        base0B, nil, nil, nil)
+hi('rubyAttribute',               gui0D, '', cterm0D, '', '', '')
+hi('rubyConstant',                gui0A, '', cterm0A, '', '', '')
+hi('rubyInterpolationDelimiter',  gui0F, '', cterm0F, '', '', '')
+hi('rubyRegexp',                  gui0C, '', cterm0C, '', '', '')
+hi('rubySymbol',                  gui0B, '', cterm0B, '', '', '')
+hi('rubyStringDelimiter',         gui0B, '', cterm0B, '', '', '')
 
 -- SASS highlighting
-highlight("sassidChar",    base08, nil, nil, nil)
-highlight("sassClassChar", base09, nil, nil, nil)
-highlight("sassInclude",   base0E, nil, nil, nil)
-highlight("sassMixing",    base0E, nil, nil, nil)
-highlight("sassMixinName", base0D, nil, nil, nil)
+hi('sassidChar',     gui08, '', cterm08, '', '', '')
+hi('sassClassChar',  gui09, '', cterm09, '', '', '')
+hi('sassInclude',    gui0E, '', cterm0E, '', '', '')
+hi('sassMixing',     gui0E, '', cterm0E, '', '', '')
+hi('sassMixinName',  gui0D, '', cterm0D, '', '', '')
+
+-- Signify highlighting
+hi('SignifySignAdd',     gui0B, gui01, cterm0B, cterm01, '', '')
+hi('SignifySignChange',  gui0D, gui01, cterm0D, cterm01, '', '')
+hi('SignifySignDelete',  gui08, gui01, cterm08, cterm01, '', '')
 
 -- Spelling highlighting
---highlight("SpellBad",   nil, nil, "undercurl", base08)
---highlight("SpellLocal", nil, nil, "undercurl", base0C)
---highlight("SpellCap",   nil, nil, "undercurl", base0D)
---highlight("SpellRare",  nil, nil, "undercurl", base0E)
+hi('SpellBad',     '', '', '', '', 'undercurl', gui08)
+hi('SpellLocal',   '', '', '', '', 'undercurl', gui0C)
+hi('SpellCap',     '', '', '', '', 'undercurl', gui0D)
+hi('SpellRare',    '', '', '', '', 'undercurl', gui0E)
+
+-- Startify highlighting
+hi('StartifyBracket',  gui03, '', cterm03, '', '', '')
+hi('StartifyFile',     gui07, '', cterm07, '', '', '')
+hi('StartifyFooter',   gui03, '', cterm03, '', '', '')
+hi('StartifyHeader',   gui0B, '', cterm0B, '', '', '')
+hi('StartifyNumber',   gui09, '', cterm09, '', '', '')
+hi('StartifyPath',     gui03, '', cterm03, '', '', '')
+hi('StartifySection',  gui0E, '', cterm0E, '', '', '')
+hi('StartifySelect',   gui0C, '', cterm0C, '', '', '')
+hi('StartifySlash',    gui03, '', cterm03, '', '', '')
+hi('StartifySpecial',  gui03, '', cterm03, '', '', '')
 
 -- Java highlighting
-highlight("javaOperator", base0D, nil, nil, nil)
-
--- LspDiagnostic base highlight group
---highlight("LspDiagnosticsDefaultError",       base08, nil, nil, nil)
---highlight("LspDiagnosticsDefaultWarning",     base0A, nil, nil, nil)
---highlight("LspDiagnosticsDefaultInformation", base0D, nil, nil, nil)
---highlight("LspDiagnosticsDefaultHint",        base0C, nil, nil, nil)
-
--- }}}
-
+hi('javaOperator',     gui0D, '', cterm0D, '', '', '')

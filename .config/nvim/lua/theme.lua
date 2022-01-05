@@ -4,10 +4,10 @@
 vim.opt.termguicolors = true
 
 -- I don't need it for some stupid reason
-vim.cmd "syntax on"
+--vim.cmd 'syntax on'
 
 -- Set colorsheme
-require "colors.tomorrow-night"
+require 'colors.tomorrow-night'
 
 -- Highlight groups
 vim.cmd [[
@@ -17,14 +17,14 @@ hi MatchParen                guifg = None     guibg = #282a2e
 hi Search                    guifg = None     guibg = #282a2e
 
 " Statusline
+hi Block                     guifg = #c5c8c6  guibg = #373b41
 hi Edge                      guifg = #1c1c1c  guibg = #848a8a
 hi Inter                     guifg = #c5c8c6  guibg = #2a2b2e
-hi Block                     guifg = #c5c8c6  guibg = #373b41
 
-" Lightspeed
+" lightspeed.nvim
 hi LightspeedLabel           guifg = #d84c54                   gui = bold,underline
-hi LightspeedLabelOverlapped guifg = #cc6666                   gui = bold,underline
 hi LightspeedLabelDistant    guifg = #8abeb7                   gui = bold,underline
+hi LightspeedLabelOverlapped guifg = #cc6666                   gui = bold,underline
 hi LightspeedOneCharMatch    guifg = #ffffff  guibg = #d84c54  gui = bold
 hi LightspeedPendingOpArea   guifg = #ffffff  guibg = #d84c54 
 hi LightspeedShortcut        guifg = #ffffff  guibg = #d84c54  gui = bold,underline
@@ -32,6 +32,16 @@ hi LightspeedShortcut        guifg = #ffffff  guibg = #d84c54  gui = bold,underl
 ]]
 
 -- Light
-if (os.getenv("ALACRITTY_LOG")) then require "colors.tomorrow"
+if (os.getenv("ALACRITTY_LOG")) then
+  require 'colors.tomorrow'
+  vim.cmd [[
+
+  hi LineNr guifg = #8e908c guibg = None
+
+  hi Edge   guifg = #ffffff guibg = #afbec5
+  hi Inter  guifg = #4d4d4c guibg = #edeff1
+  hi link Block Inter
+
+  ]]
   -- TODO configure lightspeed
 end

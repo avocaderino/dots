@@ -1,13 +1,15 @@
--- telescope.nvim config
-require "telescope".setup{
+-- telescope.nvim
+
+require('telescope').setup{
     defaults = {
-        layout_strategy = "flex",
+        layout_strategy = 'flex',
         layout_config = {
             width = 0.95,
             height = 0.95,
             preview_cutoff = 25,
             vertical = {preview_height = 0.20}
-        }
+        },
+        history = false
     },
     pickers = {
         -- picker_name = {
@@ -21,5 +23,5 @@ require "telescope".setup{
 }
 
 -- extensions
-require "telescope".load_extension "fzf"
-require "telescope".load_extension "file_browser"
+require('telescope').load_extension('fzf')
+require('telescope').load_extension('file_browser')
