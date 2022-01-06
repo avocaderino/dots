@@ -79,12 +79,6 @@ _G.packer_plugins = {
     path = "/home/sanjay/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
     url = "https://github.com/windwp/nvim-autopairs"
   },
-  ["nvim-treesitter"] = {
-    loaded = false,
-    needs_bufread = true,
-    path = "/home/sanjay/.local/share/nvim/site/pack/packer/opt/nvim-treesitter",
-    url = "https://github.com/nvim-treesitter/nvim-treesitter"
-  },
   ["nvim-web-devicons"] = {
     loaded = false,
     needs_bufread = false,

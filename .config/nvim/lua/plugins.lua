@@ -5,12 +5,6 @@ return require('packer').startup(function()
   -- packer
   use 'wbthomason/packer.nvim'
 
-  -- TODO understand
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    opt = true
-  }
-
   -- motion
   use 'ggandor/lightspeed.nvim'
 
@@ -25,7 +19,7 @@ return require('packer').startup(function()
         'telescope-fzf-native.nvim'
       },
       module = 'telescope', cmd = 'Telescope',
-      config = [[require 'modules.telescope']]
+      config = 'require \'modules.telescope\''
     },
     {
       'nvim-lua/plenary.nvim',
@@ -45,7 +39,7 @@ return require('packer').startup(function()
   -- autopair
   use {
       'windwp/nvim-autopairs',
-      require "modules.autopair"
+      require 'nvim-autopairs'.setup{}
   }
 
 end)

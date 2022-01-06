@@ -93,7 +93,7 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 set termguicolors
 
 " Set colorcheme.
-"colorscheme base16-tomorrow-night
+colorscheme base16-tomorrow-night
 
 " Turn syntax highlighting on.
 syntax on

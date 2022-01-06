@@ -9,7 +9,7 @@ local g = vim.g       -- global
 
 -- Plugins {{{
 
-g.do_filetype_lua          = 1  -- beta
+g.do_filetype_lua          = 1  -- TODO remove after this is the default
 g.did_load_filetypes       = 0
 g.loaded_gzip              = 1
 g.loaded_tar               = 1
@@ -99,7 +99,8 @@ map('n', '<A-l>', '<C-w>l', options)          -- ows
 map('n', '<leader>et', '<Cmd>Telescope<CR>', options) -- Look into the stars
 map('n', '<leader>f', '<Cmd>Telescope find_files<CR>', options) -- Files
 map('n', '<leader>b', '<Cmd>Telescope buffers<CR>', options) -- Buffers
-map('n', '<leader>t', '<Cmd>lua require("telescope").extensions.file_browser.file_browser()<CR>', options) -- File browser
+map('n', '<leader>t', [[<Cmd>lua require('telescope').extensions.file_browser.file_browser()<CR>]], options) -- File browser
+map('n', '<leader>kx', '<Cmd>%s/\\s\\+$//<CR>', options) -- trim trailing whitespaces
 
 -- }}}
 
@@ -107,9 +108,9 @@ map('n', '<leader>t', '<Cmd>lua require("telescope").extensions.file_browser.fil
 
 -- Indent
 local twos = {'lua', 'html', 'css'}
-local filetype = vim.api.nvim_buf_get_option(0,'filetype')
-for lang=1, #twos  do
-  if filetype == twos[lang] then
+local ext = vim.fn.expand('%:t'):match('[^%.]*$')
+for i = 1, #twos  do
+  if ext == twos[i] then
     o.shiftwidth = 2; o.tabstop = 2
   end
 end
