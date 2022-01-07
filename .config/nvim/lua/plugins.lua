@@ -38,8 +38,8 @@ return require('packer').startup(function()
 
   -- autopair
   use {
-      'windwp/nvim-autopairs',
-      require 'nvim-autopairs'.setup{}
+    'windwp/nvim-autopairs',
+    require 'nvim-autopairs'.setup{}
   }
 
 end)

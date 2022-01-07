@@ -43,9 +43,9 @@ local modes = setmetatable({
 local function mode()
   local current_mode = api.nvim_get_mode().mode
   if truncate(widths.mode) then
-    return string.format('%%#Edge# %s ', modes[current_mode][2]):upper()
+    return string.format(' %s ', modes[current_mode][2]):upper()
   end
-  return string.format('%%#Edge# %s ', modes[current_mode][1]):upper()
+  return string.format(' %s ', modes[current_mode][1]):upper()
 end
 
 local function filename()
@@ -65,11 +65,9 @@ local function modified()
 end
 
 local function filetype()
-  local ftype = api.nvim_buf_get_option(0,'filetype')
+  local ftype = vim.bo.filetype
   local icon = require 'utils'.icons.lookup_filetype(ftype)
-  if truncate(widths.ftype) then
-    return string.format(' %s ', icon)
-  end
+  if truncate(widths.ftype) then return string.format(' %s ', icon) end
   return string.format('  %s %s  ', icon, ftype)
 end
 
@@ -80,7 +78,7 @@ end
 
 function statusline()
   -- powaaaah
-  return table.concat({
+  return table.concat{
     '%#Edge#',
     mode(),
     '%#Inter#',
@@ -92,8 +90,8 @@ function statusline()
     filetype(),
     '%#Edge#',
     pos(),
-  })
+  }
 end
 
 -- set statusline
-vim.opt.statusline = [[%{%luaeval('statusline()')%}]]
+vim.opt.statusline = '%{%v:lua.statusline()%}'

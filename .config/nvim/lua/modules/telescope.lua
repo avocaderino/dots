@@ -9,17 +9,17 @@ require('telescope').setup{
       preview_cutoff = 25,
       vertical = {preview_height = 0.20}
     },
+    dynamic_preview_title = true,
     history = false
   },
   pickers = {
-    -- picker_name = {
-    --   picker_config_key = value,
+    -- picker_name = { picker_config_key = value,
     --   ...
     -- }
   },
   extensions = {
     file_browser = {
-      hidden = true,
+      hidden = true
     }
   }
 }

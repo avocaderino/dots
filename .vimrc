@@ -234,4 +234,3 @@ set statusline+=%-9(\ col:\ %c\ %)                  " Column no.
 set laststatus=2
 
 " }}}
-"

@@ -83,7 +83,7 @@ o.autoread      = false   -- I kinda ❤ that prompt
 
 g.mapleader = ' '
 -- map helper
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 local options = {noremap = true, silent = true}
 
 map('n', '<leader><Space>', '``', options)    -- jump to last cursor position
@@ -96,28 +96,10 @@ map('n', '<A-h>', '<C-w>h', options)          -- spl
 map('n', '<A-j>', '<C-w>j', options)          -- it
 map('n', '<A-k>', '<C-w>k', options)          -- wind
 map('n', '<A-l>', '<C-w>l', options)          -- ows
-map('n', '<leader>et', '<Cmd>Telescope<CR>', options) -- Look into the stars
-map('n', '<leader>f', '<Cmd>Telescope find_files<CR>', options) -- Files
-map('n', '<leader>b', '<Cmd>Telescope buffers<CR>', options) -- Buffers
-map('n', '<leader>t', [[<Cmd>lua require('telescope').extensions.file_browser.file_browser()<CR>]], options) -- File browser
-map('n', '<leader>kx', '<Cmd>%s/\\s\\+$//<CR>', options) -- trim trailing whitespaces
-
--- }}}
-
--- Scripts {{{
-
--- Indent
-local twos = {'lua', 'html', 'css'}
-local ext = vim.fn.expand('%:t'):match('[^%.]*$')
-for i = 1, #twos  do
-  if ext == twos[i] then
-    o.shiftwidth = 2; o.tabstop = 2
-  end
-end
-
--- Numbers
-if vim.api.nvim_win_get_width(0) > 100 then
-  o.number = true
-end
+map('n', '<leader>et','<Cmd>lua require(\'telescope.builtin\').builtin()<CR>' , options) -- Look into the stars
+map('n', '<leader>f', '<Cmd>lua require(\'telescope.builtin\').find_files()<CR>', options) -- Files
+map('n', '<leader>b', '<Cmd>lua require(\'telescope.builtin\').buffers()<CR>', options) -- Buffers
+map('n', '<leader>t', '<Cmd>lua require(\'telescope\').extensions.file_browser.file_browser()<CR>', options) -- File browser
+map('n', '<leader>kx', '<Cmd>%s/\\s\\+$//e<CR>', options) -- trim trailing whitespaces
 
 -- }}}
