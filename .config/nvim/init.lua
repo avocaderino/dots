@@ -44,14 +44,13 @@ o.ruler             = false   -- long live democracy
 o.wildmenu          = true    -- wildmenu
 o.wildmode          = 'longest,list'
 o.wildignore        = '*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.xlsx,*.pptx'
-o.laststatus        = 2       -- always enable statusline
+o.laststatus        = 2       -- always show statusline
 
 -- }}}
 
 -- Editor {{{
 
-o.mouse         = "nvi"
-o.clipboard     = "unnamed"
+o.clipboard     = 'unnamed' -- primary clipboard
 o.shiftwidth    = 4         -- indentation
 o.tabstop       = 4
 o.expandtab     = true      -- maintain peace
@@ -84,7 +83,7 @@ o.autoread      = false   -- I kinda ❤ that prompt
 g.mapleader = ' '
 -- map helper
 local map = vim.keymap.set
-local options = {noremap = true, silent = true}
+local options = {silent = true}
 
 map('n', '<leader><Space>', '``', options)    -- jump to last cursor position
 map('i', 'jj', '<Esc>', options)              -- exit insert mode
@@ -101,5 +100,7 @@ map('n', '<leader>f', '<Cmd>lua require(\'telescope.builtin\').find_files()<CR>'
 map('n', '<leader>b', '<Cmd>lua require(\'telescope.builtin\').buffers()<CR>', options) -- Buffers
 map('n', '<leader>t', '<Cmd>lua require(\'telescope\').extensions.file_browser.file_browser()<CR>', options) -- File browser
 map('n', '<leader>kx', '<Cmd>%s/\\s\\+$//e<CR>', options) -- trim trailing whitespaces
+map('n', '<leader>h', ':%s:::cg<Left><Left><Left><Left>')
+map('n', '<Esc>', '<Cmd>noh<CR><Esc>', options)
 
 -- }}}

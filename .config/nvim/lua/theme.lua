@@ -22,26 +22,29 @@ hi Inter                     guifg = #c5c8c6  guibg = #2a2b2e
 hi Block                     guifg = #c5c8c6  guibg = #373b41
 
 " lightspeed.nvim
-hi LightspeedLabel           guifg = #d84c54                   gui = bold,underline
-hi LightspeedLabelOverlapped guifg = #cc6666                   gui = bold,underline
+hi LightspeedLabel           guifg = #cc6666                   gui = bold,underline
+hi LightspeedLabelOverlapped guifg = #a3685a                   gui = bold,underline
 hi LightspeedLabelDistant    guifg = #8abeb7                   gui = bold,underline
-hi LightspeedShortcut        guifg = #ffffff  guibg = #d84c54  gui = bold,underline
-hi LightspeedOneCharMatch    guifg = #ffffff  guibg = #d84c54  gui = bold
-hi LightspeedPendingOpArea   guifg = #ffffff  guibg = #d84c54 
+hi LightspeedShortcut        guifg = #ffffff  guibg = #cc6666  gui = bold,underline
+hi LightspeedOneCharMatch    guifg = #ffffff  guibg = #cc6666  gui = bold
+hi LightspeedPendingOpArea   guifg = #ffffff  guibg = #cc6666 
 
 ]]
 
--- Light
 if (os.getenv("ALACRITTY_LOG")) then
   require 'colors.tomorrow'
   vim.cmd [[
-
-  hi LineNr guifg = #8e908c guibg = None
-
-  hi Edge   guifg = #ffffff guibg = #afbec5
-  hi Inter  guifg = #4d4d4c guibg = #edeff1
+  hi LineNr                    guifg = #8e908c  guibg = None
+  hi Edge                      guifg = #ffffff  guibg = #afbec5
+  hi Inter                     guifg = #4d4d4c  guibg = #edeff1
   hi link Block Inter
-
+  "lightspeed.nvim
+  hi LightspeedUnlabeledMatch  guifg = #4d4d4c                   gui = bold
+  hi LightspeedLabel           guifg = #cc6666                   gui = bold,underline
+  hi LightspeedLabelOverlapped guifg = #a3685a                   gui = bold,underline
+  hi LightspeedLabelDistant    guifg = #8abeb7                   gui = bold,underline
+  hi LightspeedShortcut        guifg = #ffffff  guibg = #cc6666  gui = bold,underline
+  hi LightspeedOneCharMatch    guifg = #ffffff  guibg = #cc6666  gui = bold
+  hi LightspeedPendingOpArea   guifg = #ffffff  guibg = #cc6666 
   ]]
-  -- TODO configure lightspeed
 end

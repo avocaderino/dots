@@ -75,6 +75,7 @@ _G.packer_plugins = {
     url = "https://github.com/ggandor/lightspeed.nvim"
   },
   ["nvim-autopairs"] = {
+    config = { "require('nvim-autopairs').setup{}" },
     loaded = true,
     path = "/home/sanjay/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
     url = "https://github.com/windwp/nvim-autopairs"
@@ -150,6 +151,10 @@ if not vim.g.packer_custom_loader_enabled then
   vim.g.packer_custom_loader_enabled = true
 end
 
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+require('nvim-autopairs').setup{}
+time([[Config for nvim-autopairs]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)

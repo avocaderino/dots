@@ -1,222 +1,91 @@
 local utils = {}
 
-utils.filter_files = function(file_list)
-  local filtered_list = {}
-  local unique_strings = {}
-  local index = 1
-  for _, v in pairs(file_list) do
-    if unique_strings[v] == nil then
-      unique_strings[v] = index
-      filtered_list[index] = v
-      index = index + 1
-    end
-  end
-  return filtered_list
-end
-
-utils.icons = {}
-utils.icons.default_symbol = ''
-utils.icons.map = {
-  ai          = '',
-  apache      = '',
-  awk         = '',
-  bash        = '',
-  bat         = '',
-  bazel       = '',
-  bib         = '',
-  bmp         = '',
-  c           = '',
-  cc          = '',
-  checkhealth = '',
-  clisp       = '',
-  clj         = '',
-  cljc        = '',
-  clojure     = '',
-  cmake       = '',
-  cobol       = '',
-  coffee      = '',
-  conf        = '',
-  config      = '',
-  coq         = '',
-  cp          = '',
-  cpp         = '',
-  crystal     = '',
-  csh         = '',
-  csharp      = '',
-  css         = '',
-  cuda        = '',
-  cxx         = '',
-  cython      = '',
-  d           = ' ',
-  dart        = '',
-  db          = '',
-  diff        = '',
-  dockerfile  = '',
-  dump        = '',
-  edn         = '',
-  ejs         = '',
-  elisp       = '',
-  elixir      = '',
-  elm         = '',
-  erl         = '',
-  fish        = '',
-  fs          = '',
-  fsi         = '',
-  fsscript    = '',
-  fsx         = '',
-  gif         = '',
-  git         = '',
-  gitcommit   = '',
-  gnu         = '',
-  go          = '',
-  graphviz    = '',
-  h           = '',
-  haskell     = '',
-  hbs         = '',
-  hh          = '',
-  hpp         = '',
-  hrl         = '',
-  hs          = '',
-  htm         = '',
-  html        = '',
-  hxx         = '',
-  ico         = '',
-  idris       = '',
-  ini         = '',
-  j           = '',
-  jasmine     = '',
-  java        = '',
-  javascript  = ' ',
-  jl          = '',
-  jpeg        = '',
-  jpg         = '',
-  js          = ' ',
-  json        = '',
-  jsx         = '',
-  julia       = '⛬',
-  jupyter     = '',
-  kotlin      = '',
-  ksh         = '',
-  labview     = '',
-  less        = '',
-  lhs         = '',
-  lisp        = 'λ',
-  llvm        = '',
-  lsp         = 'λ',
-  lua         = '',
-  m           = ' ',
-  markdown    = '',
-  mathematica = '',
-  matlab      = ' ',
-  max         = '',
-  md          = '',
-  meson       = '',
-  ml          = '',
-  mli         = '',
-  mustache    = '',
-  netrw       = '',
-  nginx       = '',
-  nim         = '',
-  nix         = '',
-  nvcc        = '',
-  nvidia      = '',
-  octave      = '',
-  opencl      = '',
-  org         = '',
-  packer      = '',
-  patch       = '',
-  perl        = '',
-  perl6       = '',
-  php         = '',
-  pl          = '',
-  png         = '',
-  postgresql  = '',
-  pp          = '',
-  prolog      = '',
-  ps          = '',
-  ps1         = '',
-  psb         = '',
-  psd         = '',
-  puppet      = '',
-  py          = '',
-  pyc         = '',
-  pyd         = '',
-  pyo         = '',
-  python      = '',
-  rb          = '',
-  react       = '',
-  reason      = '',
-  rkt         = '',
-  rlib        = '',
-  rmd         = '',
-  rs          = '',
-  rss         = '',
-  ruby        = '',
-  rust        = '',
-  sass        = '',
-  scala       = '',
-  scheme      = 'λ',
-  scm         = 'λ',
-  scrbl       = '',
-  scss        = '',
-  sh          = '',
-  slim        = '',
-  sln         = '',
-  sql         = '',
-  startify    = '',
-  styl        = '',
-  suo         = '',
-  svg         = '',
-  swift       = '',
-  t           = '',
-  tex         = '',
-  ts          = '',
-  tsx         = '',
-  twig        = '',
-  txt         = '',
-  typescript  = '',
-  vim         = '',
-  vue         = '﵂',
-  xml         = '',
-  xul         = '',
-  yaml        = '',
-  yml         = '',
-  zsh         = '',
+utils.icons = {
+  awk             = '',
+  bash            = '',
+  bib             = '',
+  bzl             = '', --
+  c               = '',
+  checkhealth     = '',
+  clojure         = '',
+  cmake           = '', --
+  cobol           = '', --
+  conf            = '',
+  cpp             = '',
+  csh             = '',
+  cs              = '', --
+  css             = '',
+  d               = '',
+  dart            = '',
+  db              = '',
+  diff            = '',
+  dockerfile      = '', --
+  elm             = '',
+  erlang          = '',
+  fish            = '',
+  fortran         = 'F',
+  fsharp          = '',
+  git             = '',
+  gitcommit       = '',
+  go              = '',
+  haskell         = '',
+  html            = '',
+  java            = '',
+  javascript      = '',
+  json            = '',
+  julia           = '',
+  kotlin          = '', --
+  ksh             = '',
+  less            = '',
+  lhaskell        = '',
+  lisp            = 'λ',
+  lua             = '',
+  markdown        = '',
+  matlab          = '', --
+  meson           = '', --
+  netrw           = '',
+  nginx           = '',
+  nix             = '',
+  ocaml           = '', --
+  packer          = '',
+  perl            = '',
+  php             = '',
+  plaintex        = '',
+  postscr         = '',
+  prolog          = '',
+  ps1             = '',
+  puppet          = '',
+  python          = '',
+  javascriptreact = '',
+  rmd             = '',
+  ruby            = '',
+  rust            = '',
+  sass            = '',
+  scala           = '',
+  scheme          = 'λ',
+  scss            = '',
+  sh              = '',
+  sql             = '',
+  svg             = '',
+  swift           = '',
+  tex             = '',
+  text            = '',
+  twig            = '',
+  typescript      = '',
+  vim             = '',
+  vue             = '﵂',
+  xml             = '',
+  yaml            = '',
+  zsh             = '',
 }
 
--- Because these extensions are dumb and have symbols
-utils.icons.map['c++'] = ''
-utils.icons.map['f#'] = ''
-
-utils.icons.lookup = function(file_path)
-  local extension = utils.filename_extension(file_path)
-  return utils.icons.lookup_filetype(extension)
-end
-
-utils.icons.lookup_filetype = function(filetype)
-  local icon = utils.icons.map[filetype]
-  if icon == nil then
-    icon = utils.icons.default_symbol
+utils.lookup = function(filetype)
+  local icon = utils.icons[filetype]
+  if not icon then
+    icon = '' -- default
   end
 
   return icon
-end
-
-utils.filename_extension = function(file_path)
-  return file_path:match('%.(%w+)$') or ''
-end
-
-utils.iconify = function(path)
-  return utils.icons.lookup(path) .. ' ' .. path
-end
-
-utils.filter_and_iconify = function(file_list)
-  local result = {}
-  for _, path in ipairs(utils.filter_files(file_list)) do
-    table.insert(result, utils.iconify(path))
-  end
-
-  return result
 end
 
 return utils

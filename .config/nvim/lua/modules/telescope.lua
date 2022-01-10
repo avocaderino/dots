@@ -10,10 +10,12 @@ require('telescope').setup{
       vertical = {preview_height = 0.20}
     },
     dynamic_preview_title = true,
+    file_ignore_patterns = {'%.iso'},
     history = false
   },
   pickers = {
-    -- picker_name = { picker_config_key = value,
+    -- picker_name = {
+    --   picker_config_key = value,
     --   ...
     -- }
   },

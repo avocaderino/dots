@@ -66,8 +66,10 @@ end
 
 local function filetype()
   local ftype = vim.bo.filetype
-  local icon = require 'utils'.icons.lookup_filetype(ftype)
-  if truncate(widths.ftype) then return string.format(' %s ', icon) end
+  local icon = require('utils').lookup(ftype)
+  if truncate(widths.ftype) then
+    return string.format(' %s ', icon)
+  end
   return string.format('  %s %s  ', icon, ftype)
 end
 

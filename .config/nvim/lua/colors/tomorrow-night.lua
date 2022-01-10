@@ -45,10 +45,10 @@ vim.cmd [[
 hi clear
 syntax reset
 ]]
+-- Colorscheme name
 vim.g.colors_name = 'tomorrow-night'
 
 -- Highlighting function
--- Optional variables are attributes and guisp
 local function hi(hlgroup, guifg, guibg, ctermfg, ctermbg, gui, guisp)
   local cmd = {'hi', hlgroup}
   if guifg then table.insert(cmd, 'guifg=' .. guifg) end
