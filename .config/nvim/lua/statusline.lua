@@ -68,7 +68,7 @@ local function filetype()
   local ftype = vim.bo.filetype
   local icon = require('utils').lookup(ftype)
   if truncate(widths.ftype) then
-    return string.format(' %s ', icon)
+    return string.format('  %s  ', icon)
   end
   return string.format('  %s %s  ', icon, ftype)
 end
@@ -81,16 +81,15 @@ end
 function statusline()
   -- powaaaah
   return table.concat{
-    '%#Edge#',
+    '%#Block#',
     mode(),
     '%#Inter#',
     filename(),
     readonly(),
     modified(),
     '%=',
-    '%#Block#',
     filetype(),
-    '%#Edge#',
+    '%#Block#',
     pos(),
   }
 end

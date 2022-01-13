@@ -42,10 +42,4 @@ return require('packer').startup(function()
     config = [[require('nvim-autopairs').setup{}]]
   }
 
-  -- which-key
---  use {
---    'folke/which-key.nvim',
---    config = [[require('which-key').setup{}]]
---  }
-
 end)

@@ -23,20 +23,20 @@ local gui0F        = '#a3685a'
 
 -- Terminal color definitions
 local cterm00        = '00'
+local cterm01        = '18'
+local cterm02        = '19'
 local cterm03        = '08'
+local cterm04        = '20'
 local cterm05        = '07'
+local cterm06        = '21'
 local cterm07        = '15'
 local cterm08        = '01'
+local cterm09        = '16'
 local cterm0A        = '03'
 local cterm0B        = '02'
 local cterm0C        = '06'
 local cterm0D        = '04'
 local cterm0E        = '05'
-local cterm01        = '18'
-local cterm02        = '19'
-local cterm04        = '20'
-local cterm06        = '21'
-local cterm09        = '16'
 local cterm0F        = '17'
 
 
@@ -286,3 +286,23 @@ hi('StartifySpecial',  gui03, nil, cterm03, nil, nil, nil)
 
 -- Java highlighting
 hi('javaOperator',     gui0D, nil, cterm0D, nil, nil, nil)
+
+-- User defined {{{
+
+hi('Search',     'none', gui01, 'none', cterm01, nil, nil)
+hi('IncSearch',  gui00, gui05, cterm00, cterm05, nil, nil)
+hi('MatchParen', 'none', gui01, 'none', cterm01, nil, nil)
+
+-- Statusline
+hi('Inter', gui05, gui01, cterm05, cterm01, nil, nil)
+hi('Block', gui05, gui02, cterm05, cterm02, nil, nil)
+
+-- Lightspeed
+hi('LightspeedLabel',           gui08, nil, cterm08, nil, 'bold,underline', nil)
+hi('LightspeedLabelOverlapped', gui0F, nil, cterm0F, nil, 'bold,underline', nil)
+hi('LightspeedLabelDistant',    gui0C, nil, cterm0C, nil, 'bold,underline', nil)
+hi('LightspeedShortcut',        gui07, gui08, cterm07, cterm08, 'bold,underline', nil)
+hi('LightspeedOneCharMatch',    gui07, gui08, cterm07, cterm08, 'bold', nil)
+hi('LightspeedPendingOpArea',   gui07, gui08, cterm07, cterm08, nil, nil)
+
+-- }}}

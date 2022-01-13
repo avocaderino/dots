@@ -101,6 +101,6 @@ map('n', '<leader>b', '<Cmd>lua require(\'telescope.builtin\').buffers()<CR>', o
 map('n', '<leader>t', '<Cmd>lua require(\'telescope\').extensions.file_browser.file_browser()<CR>', options) -- File browser
 map('n', '<leader>kx', '<Cmd>%s/\\s\\+$//e<CR>', options) -- trim trailing whitespaces
 map('n', '<leader>h', ':%s:::cg<Left><Left><Left><Left>')
-map('n', '<Esc>', '<Cmd>noh<CR><Esc>', options)
+map('n', '<Esc>', '<Cmd>noh | echo<CR><Esc>')
 
 -- }}}

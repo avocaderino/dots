@@ -15,17 +15,17 @@ require('telescope').setup{
   },
   pickers = {
     -- picker_name = {
-    --   picker_config_key = value,
-    --   ...
-    -- }
-  },
-  extensions = {
-    file_browser = {
-      hidden = true
+      --   picker_config_key = value,
+      --   ...
+      -- }
+    },
+    extensions = {
+      file_browser = {
+        hidden = true
+      }
     }
   }
-}
 
--- extensions
-require('telescope').load_extension('fzf')
-require('telescope').load_extension('file_browser')
+  -- extensions
+  require('telescope').load_extension('fzf')
+  require('telescope').load_extension('file_browser')
