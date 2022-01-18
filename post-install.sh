@@ -25,8 +25,8 @@ echo -e 'Installing packages\n'
 # Installs
 sudo apt install alacritty breeze-cursor-theme celluloid cheese code dconf-editor \
 deja-dup python3-pydrive font-manager fzf gimp gnome-tweaks gparted htop inkscape \
-kitty lm-sensors neovim obs-studio pavucontrol python3-pip python3-tk ripgrep \
-shotwell synaptic telegram-desktop tlp transmission tree -y
+kitty neovim obs-studio pavucontrol python3-pip python3-tk ripgrep shotwell \
+synaptic telegram-desktop tlp transmission tree -y
 # Checkpoint
 sudo apt install neofetch --no-install-recommends && neofetch
 # Defaults
