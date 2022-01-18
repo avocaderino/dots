@@ -1,25 +1,27 @@
 #!/bin/bash
 
-echo
-echo 'Post Install Setup'
-echo '--------------------------------------------------------------------------------'
-echo
+echo -e '\nPost Install Setup'
+echo -e '------------------\n'
 echo 'Do you want to continue: '
 read cont
+
+# Change mind
 while :
 do
-    if [[ ${cont:0:1} == n ]]; then
-        exit
-    elif [[ ${cont:0:1} == n ]]; then
+    # continue
+    if [[ ${cont:0:1} == y ]]; then
         break
+    # don't touch my system mf
+    elif [[ ${cont:0:1} == n ]]; then
+        exit 0
+    # I Am Stupid (Charles Leclerc remix)
     else
         echo 'yes or no?: '
         read cont
     fi
 done
 
-echo 'Installing packages'
-echo
+echo -e 'Installing packages\n'
 # Installs
 sudo apt install alacritty breeze-cursor-theme celluloid cheese code dconf-editor \
 deja-dup python3-pydrive font-manager fzf gimp gnome-tweaks gparted htop inkscape \
@@ -37,38 +39,54 @@ sudo rm -r /usr/share/icons/ePapirus*
 # https://www.reddit.com/r/pop_os/comments/rp9cvo/is_that_normal/
 sudo sed -i '1,4 s/Inherits=breeze/Inherits=Pop,breeze/' /usr/share/icons/Papirus*/index.theme
 echo 'Done'
-echo
 
-echo 'Setting up pipewire'
-echo
+echo -e '\nSetting up pipewire\n'
 # Pulseaudio is shit with my bluetooth earphones
 sudo apt install libspa-0.2-bluetooth pipewire-audio-client-libraries \
 pipewire-pulse -y && sudo apt remove --purge pulseaudio-module-bluetooth -y
 echo 'Done'
-echo
 
-echo 'Debloating'
-echo
+echo -e '\nDebloating\n'
 # Removing packages that I have absolutely no use for
 sudo apt remove --purge eog totem simple-scan geary gnome-contacts gnome-font-viewer \
 youtube-dl vlc fonts-arphic-uming fonts-arphic-ukai -y
 sudo apt autoremove --purge -y
 echo 'Done'
-echo
 
-echo 'Adding external repos'
-echo
+echo -e '\nAdding external repos\n'
 # Firefox beta & Neovim nightly
 sudo add-apt-repository ppa:neovim-ppa/unstable -y
 sudo add-apt-repository ppa:mozillateam/firefox-next -y
 echo 'Done'
-echo
 
-echo 'Updating'
-echo
+echo -e '\nUpdating\n'
 # Update all packages
 sudo apt update && sudo apt full-upgrade && sudo apt autoremove --purge -y
 echo 'Done'
-echo
-echo
-echo 'Setup has completed. You may want to change the hostname and reboot'
+
+echo -e '\nDo you want to setup configs?: '
+read conf
+if ${conf:0:1} == 'n'; then
+    echo -e '\n\nSetup has completed. You may want to change the hostname and reboot\n'
+    exit 0
+fi
+
+# Setup configs
+mkdir ~/git ; cd ~/git
+if [[ -d dots ]]; then
+    mv dots dots.bak
+    echo 'Moved ~/git/dots to ~/gits/dots.bak'
+fi
+# Cloning dotfiles repo
+git clone https://github.com/sanjapm/dots.git && cd dots
+if [[ -d ~/Pictures ]]; then
+    mv ~/Pictures ~/Pictures.bak
+    echo 'Moved ~/Pictures to ~/Pictures.bak'
+fi
+cp Pictures ~ -r
+cp .bash_aliases ~
+cd .config && cp -r nvim kitty Code ~/.config
+
+# Post Install finished
+cd ~
+echo -e '\n\nSetup has completed. You may want to change the hostname and reboot\n'
