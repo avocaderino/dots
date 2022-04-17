@@ -93,6 +93,7 @@ if [[ -d ~/Pictures ]]; then
 fi
 cp Pictures ~ -r
 cp .bash_aliases ~
+cp -r .bashrc.d ~
 cd .config && cp -r nvim kitty Code ~/.config
 
 # Post Install finished
