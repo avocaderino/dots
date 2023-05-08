@@ -58,7 +58,6 @@ if [[ $distro == 'pop' ]]; then
     echo -e '\nAdding external repos\n'
     # Firefox beta & Neovim nightly
     sudo add-apt-repository ppa:neovim-ppa/unstable -y
-    sudo add-apt-repository ppa:mozillateam/firefox-next -y
     echo 'Done'
 
     echo -e '\nUpdating\n'
