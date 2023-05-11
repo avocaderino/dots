@@ -52,12 +52,6 @@ require("lazy").setup{
         file_ignore_patterns = {"%.iso"},
         history = false
       },
-      pickers = {
-        -- picker_name = {
-        --   picker_config_key = value,
-        --   ...
-        -- }
-      },
       extensions = {
         file_browser = {
           hidden = true

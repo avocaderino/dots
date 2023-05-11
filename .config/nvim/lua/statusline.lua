@@ -51,7 +51,7 @@ end
 local function filename()
   local filepath = api.nvim_buf_get_name(0)
   -- Beautiful
-  return string.format(" %%<%.30s ", filepath:match("[^/]+$") or "No Name")
+  return string.format(" %%<%.30s ", filepath:match("[^/]+$") or "Untitled")
 end
 
 local function readonly()
@@ -153,15 +153,16 @@ local function filetype()
   if not icon then
     icon = "" -- default
   end
-  if truncate(widths.ftype) then
-    return string.format("  %s  ", icon)
-  end
-  return string.format("  %s %s  ", icon, ftype)
+--  if truncate(widths.ftype) then
+--    return string.format(" %s", icon)
+--  end
+--  return string.format("  %s %s  ", icon, ftype)
+  return string.format("  %s", icon)
 end
 
 local function pos()
   if truncate(widths.pos) then return " %l:%-c " end
-  return " %2l:%-2c "
+  return "  %l:%-c  "
 end
 
 function statusline()
@@ -170,13 +171,13 @@ function statusline()
     "%#Block#",
     mode(),
     "%#Inter#",
+    filetype(),
     filename(),
     readonly(),
     modified(),
     "%=",
-    filetype(),
-    "%#Block#",
     pos(),
+    "%#Block# ",
   }
 end
 
