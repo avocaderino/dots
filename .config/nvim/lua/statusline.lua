@@ -49,9 +49,12 @@ local function mode()
 end
 
 local function filename()
-  local filepath = api.nvim_buf_get_name(0)
   -- Beautiful
-  return string.format(" %%<%.30s ", filepath:match("[^/]+$") or "Untitled")
+  local filepath = api.nvim_buf_get_name(0):match("[^/]+$")
+  if not filepath then
+    filepath = vim.bo.filetype:match(".+") or "Untitled"
+  end
+  return string.format(" %%<%.30s ", filepath)
 end
 
 local function readonly()
