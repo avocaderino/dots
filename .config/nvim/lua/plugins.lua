@@ -54,7 +54,8 @@ require("lazy").setup{
       },
       extensions = {
         file_browser = {
-          hidden = true
+          hidden = true,
+          initial_mode = "normal"
         }
       }
     }

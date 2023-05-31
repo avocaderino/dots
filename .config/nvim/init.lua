@@ -72,7 +72,7 @@ o.spell         = false     -- ffs, I know how to spell
 -- File {{{
 
 o.updatetime    = 100
-o.backup        = false   -- livin" on the edge
+o.backup        = false   -- living on the edge
 o.undofile      = true    -- prevent fuckups
 o.undolevels    = 1000
 o.undoreload    = 10000
@@ -90,8 +90,8 @@ local silent = {silent = true}
 map("n", "<leader><space>", "``", silent)    -- jump to last cursor position
 map("i", "jj", "<esc>", silent)              -- exit insert mode
 map("n", "Y", "y$", silent)                  -- yank to eol
-map("n", "P", "$P", silent)                  -- past at eol
-map("n", "n", "nzz", silent)                 -- centre movin" up
+map("n", "P", "$P", silent)                  -- pasta at eol
+map("n", "n", "nzz", silent)                 -- centre movin' up
 map("n", "N", "Nzz", silent)                 -- and down, like a roller coastah
 map("n", "<a-h>", "<c-w>h", silent)          -- spl
 map("n", "<a-j>", "<c-w>j", silent)          -- it

@@ -27,7 +27,7 @@ if [[ $distro == 'pop' ]]; then
     echo -e '\nInstalling packages\n'
     # Installs
     sudo apt install alacritty breeze-cursor-theme celluloid cheese code \
-    dconf-editor deja-dup python3-pydrive font-manager fzf gimp gnome-tweaks \
+    dconf-editor font-manager fzf gimp gnome-tweaks \
     gparted htop inkscape kitty neovim obs-studio pavucontrol python3-pip \
     python3-tk ripgrep shotwell synaptic telegram-desktop tlp transmission tree -y
     # Checkpoint
@@ -51,7 +51,7 @@ if [[ $distro == 'pop' ]]; then
     echo -e '\nDebloating\n'
     # Removing packages that I have absolutely no use for
     sudo apt remove --purge eog totem simple-scan geary gnome-contacts \
-    gnome-font-viewer youtube-dl vlc fonts-arphic-uming fonts-arphic-ukai -y
+    gnome-font-viewer -y
     sudo apt autoremove --purge -y
     echo 'Done'
 
