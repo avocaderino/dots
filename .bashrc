@@ -104,5 +104,3 @@ if [ -d ~/.bashrc.d ]; then
     done
 fi
 
-# The Editor War
-set -o vi
