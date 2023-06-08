@@ -2,9 +2,10 @@
 
 vim.loader.enable()   -- experimental lua-loader
 
-require "theme"       -- lua/theme.lua
-require "statusline"  -- lua/statusline.lua
-require "plugins"     -- lua/plugins.lua
+require "theme"
+require "statusline"
+require "plugins"
+require "keymaps"
 
 local o = vim.opt
 local g = vim.g
@@ -25,7 +26,7 @@ g.loaded_remote_plugins    = 1
 g.loaded_rrhelper          = 1
 g.loaded_getscript         = 1
 g.loaded_getscriptPlugin   = 1
---g.loaded_tutor_mode_plugin = 1
+g.loaded_tutor_mode_plugin = 1
 -- language
 g.loaded_python_provider  = 0   -- python2 is deprecated anyway
 g.loaded_perl_provider    = 0   -- perl
@@ -77,35 +78,5 @@ o.undofile      = true    -- prevent fuckups
 o.undolevels    = 1000
 o.undoreload    = 10000
 o.autoread      = false   -- I kinda ❤ that prompt
-
--- }}}
-
--- Mappings {{{
-
-g.mapleader = " "
--- map helper
-local map = vim.keymap.set
-local silent = {silent = true}
-
-map("n", "<leader><space>", "``", silent)    -- jump to last cursor position
-map("i", "jj", "<esc>", silent)              -- exit insert mode
-map("n", "Y", "y$", silent)                  -- yank to eol
-map("n", "P", "$P", silent)                  -- pasta at eol
-map("n", "n", "nzz", silent)                 -- centre movin' up
-map("n", "N", "Nzz", silent)                 -- and down, like a roller coastah
-map("n", "<a-h>", "<c-w>h", silent)          -- spl
-map("n", "<a-j>", "<c-w>j", silent)          -- it
-map("n", "<a-k>", "<c-w>k", silent)          -- wind
-map("n", "<a-l>", "<c-w>l", silent)          -- ows
-map("n", "<leader>kx", "<cmd>%s/\\s\\+$//e<cr>", silent) -- trim trailing whitespaces
-map("n", "<leader>h", ":%s:::cg<left><left><left><left>") -- find and replace
-map("n", "<esc>", "<cmd>noh | echo<cr><Esc>") -- clear cmdline
--- telescope
-map("n", "<leader>et","<cmd>Telescope<cr>" , silent) -- Look into the stars
-map("n", "<leader>f", "<cmd>Telescope find_files<cr>", silent) -- Files
-map("n", "<leader>b", "<cmd>Telescope buffers<cr>", silent) -- Buffers
-map("n", "<leader>t", "<cmd>Telescope file_browser<cr>", silent) -- File browser
--- lazy
-map("n", "<leader>l", "<cmd>Lazy<cr>")
 
 -- }}}

@@ -8,7 +8,3 @@ vim.opt.termguicolors = true
 
 -- Set colorsheme
 require "colors.tomorrow-night"
-
-if os.getenv("ALACRITTY_LOG") then
-  require "colors.tokyonight"
-end

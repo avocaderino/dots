@@ -13,10 +13,14 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup{
 
-  -- motion
-  { "ggandor/lightspeed.nvim" },
+  -- lightspeed {{{
+  {
+    "ggandor/lightspeed.nvim" ,
+    event = "VeryLazy"
+  },
+  -- }}}
 
-  -- telescope
+  -- telescope {{{
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
@@ -49,25 +53,21 @@ require("lazy").setup{
           vertical = { preview_height = 0.20 }
         },
         dynamic_preview_title = true,
-        file_ignore_patterns = {"%.iso"},
         history = false
-      },
-      extensions = {
-        file_browser = {
-          hidden = true,
-          initial_mode = "normal"
-        }
       }
     }
 
   },
+  -- }}}
 
-  -- autopair
+  -- autopair {{{
   {
     "windwp/nvim-autopairs",
+    event = "VeryLazy",
     config = function()
       require("nvim-autopairs").setup{}
     end
   },
+  -- }}}
 
 }
