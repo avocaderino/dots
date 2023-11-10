@@ -32,13 +32,6 @@ map("v", "<a-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 map("v", "<a-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 -- }}}
 
--- windows {{{
-map("n", "<c-h>", "<c-w>h")          -- spl
-map("n", "<c-j>", "<c-w>j")          -- it
-map("n", "<c-k>", "<c-w>k")          -- wind
-map("n", "<c-l>", "<c-w>l")          -- ows
--- }}}
-
 -- lazy {{{
 map("n", "<leader>l", "<cmd>Lazy<cr>")
 -- }}}
@@ -49,5 +42,3 @@ map("n", "<leader>f", "<cmd>Telescope find_files<cr>")
 map("n", "<leader>b", "<cmd>Telescope buffers<cr>")
 map("n", "<leader>t", "<cmd>Telescope file_browser<cr>")
 -- }}}
-
-
