@@ -8,7 +8,7 @@ alias l='ls -CF'
 # packages
 alias yay='sudo dnf upgrade && flatpak update'  # dnf and flatpak updates
 alias yeet='sudo dnf remove'                    # yeet a package lol
-alias evide='dnf search --names-only'           # search for packages
+alias evide='sudo dnf search'                   # search for packages
 alias pip-update='pip list -l --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U'
 
 # vims

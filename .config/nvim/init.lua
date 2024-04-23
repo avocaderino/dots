@@ -54,8 +54,8 @@ o.laststatus        = 2       -- always show statusline
 -- Editor {{{
 
 o.clipboard     = "unnamedplus"
-o.shiftwidth    = 4         -- indentation
-o.tabstop       = 4
+--o.shiftwidth    = 4         -- indentation
+--o.tabstop       = 4
 o.expandtab     = true      -- maintain peace
 o.foldmethod    = "marker"  -- gotta deal with kitty.conf
 o.ignorecase    = true      -- search

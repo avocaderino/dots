@@ -19,8 +19,8 @@ map("v", ">", ">gv")                 -- why is this not default behaviour
 
 -- vscode? {{{
 map("n", "<leader>kx", "<cmd>%s/\\s\\+$//e<cr>", { silent = true })  -- trim
-map("n", "<leader>h", ":%s:::cg<left><left><left><left>") -- find and replace
-map("n", "<esc>", "<cmd>noh | echo<cr><Esc>")             -- clear cmdline
+map({"n", "v"}, "<leader>h", ":%s:::cg<left><left><left><left>")     -- replace
+map("n", "<esc>", "<cmd>noh | echo<cr><esc>")                  -- clear cmdline
 -- }}}
 
 -- move lines {{{
@@ -48,4 +48,5 @@ map("n", "<leader>et","<cmd>Telescope<cr>")
 map("n", "<leader>f", "<cmd>Telescope find_files<cr>")
 map("n", "<leader>b", "<cmd>Telescope buffers<cr>")
 map("n", "<leader>t", "<cmd>Telescope file_browser<cr>")
+map("n", "<c-f>", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
 -- }}}

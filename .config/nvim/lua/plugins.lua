@@ -13,12 +13,11 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup{
 
-  -- lightspeed {{{
-  {
-    "ggandor/lightspeed.nvim" ,
-    event = "VeryLazy"
-  },
-  -- }}}
+  -- lightspeed
+  "ggandor/lightspeed.nvim",
+
+  -- tabstop and shiftwidth
+  "tpope/vim-sleuth",
 
   -- telescope {{{
   {
@@ -39,7 +38,10 @@ require("lazy").setup{
         config = function()
           require("telescope").load_extension("fzf")
         end,
-        build = "make"
+        build = "make",
+        cond = function()
+          return vim.fn.executable 'make' == 1
+        end
       }
     },
 
@@ -63,7 +65,7 @@ require("lazy").setup{
   -- autopair {{{
   {
     "windwp/nvim-autopairs",
-    event = "VeryLazy",
+    event = "InsertEnter",
     config = function()
       require("nvim-autopairs").setup{}
     end
