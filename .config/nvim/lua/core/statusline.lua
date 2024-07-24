@@ -168,12 +168,16 @@ local function pos()
   return "  %l:%-c  "
 end
 
+-- colors {{{
+vim.api.nvim_set_hl(0, "Block", {link = "Cursor"})
+-- }}}
+
 function statusline()
   -- powaaaah
   return table.concat{
     "%#Block#",
     mode(),
-    "%#Inter#",
+    "%#StatusLine#",
     filetype(),
     filename(),
     readonly(),
