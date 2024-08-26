@@ -1,0 +1,354 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+# Import additional configurational files
+import = ["~/.config/alacritty/themes/kanagawa-lotus.toml"]
+
+# Shell
+#
+# You can set `shell.program` to the path of your favorite shell, e.g. `/bin/fish`.
+# Entries in `shell.args` are passed unmodified as arguments to the shell.
+#
+# Default:
+#   - (Linux/BSD/macOS) $SHELL or user login shell if $SHELL is unset
+#   - (Windows) powershell
+[shell]
+  program = "/bin/bash"
+  args = [ "--login" ]
+
+# Startup directory
+#
+# Directory the shell is started in. If this is unset, or `None`, the working
+# directory of the parent process will be used.
+#working_directory: None
+
+# Live Config reload
+#live_config_reload = true
+
+# IPC
+# Offer IPC using alacritty msg
+#ipc_socket = true
+
+  # Any items in the `env` entry below will be added as
+  # environment variables. Some entries may override variables
+  # set by alacritty itself.
+[env]
+  # TERM variable
+  #
+  # This value is used to set the `$TERM` environment variable for
+  # each instance of Alacritty. If it is not present, alacritty will
+  # check the local terminfo database and use `alacritty` if it is
+  # available, otherwise `xterm-256color` is used.
+  TERM = "xterm-256color"
+
+[window]
+  # Window dimensions (changes require restart)
+  #
+  # Specified in number of columns/lines, not pixels.
+  # If both are `0`, this setting is ignored.
+  #dimensions = { columns = 0, lines = 0 }
+
+  # Window position (changes require restart)
+  #
+  # Specified in number of pixels.
+  # If the position is "None", the window manager will handle the placement.
+  # No effect on wayland.
+  #position = "None"
+
+  # Window padding (changes require restart)
+  #
+  # Blank space added around the window in pixels. This padding is scaled
+  # by DPI and the specified value is always added at both opposing sides.
+  padding = { x = 6, y = 6 }
+
+  # Spread additional padding evenly around the terminal content.
+  #dynamic_padding = false
+
+  # Window decorations
+  #
+  # Values for `decorations`:
+  #   - "Full": Borders and title bar
+  #   - "None": Neither borders nor title bar
+  # macOS only
+  #   - "Transparent": Title bar, transparent background and title bar buttons
+  #   - "Buttonless": Title bar, transparent background, but no title bar buttons
+  decorations = "Full"
+
+  # Background opacity
+  #
+  # Window opacity as a floating point number from `0.0` to `1.0`.
+  # The value `0.0` is completely transparent and `1.0` is opaque.
+  #opacity = 1.0
+
+  # Blur (macOS/KDE Wayland)
+  #
+  # Request compositor to blur content behind transparent windows
+  # blur = false
+
+  # Startup Mode (changes require restart)
+  #
+  # Values for `startup_mode`:
+  #   - "Windowed"
+  #   - "Maximized"
+  #   - "Fullscreen"
+  # Values for `startup_mode` (macOS only):
+  #   - "SimpleFullscreen
+  #startup_mode = "Windowed"
+
+  # Window title
+  title = "Terminal"
+  # Allow terminal applications to change window title
+  #dynamic_title = true
+
+  # Window class (Linux/BSD only):
+  #class = { instance = "Alacritty", general = "Alacritty" }
+
+  # GTK theme variant (Linux/BSD only)
+  #
+  # Override the variant of the GTK theme.
+  # Commonly supported values are "Dark" and "Light.
+  # Set this to "None" to use the default theme variant.
+  #decorations_theme_variant = "None"
+
+  # Resize increments (macOs/X11 only)
+  # Prefer resizing window by discrete steps equal to cell dimensions.
+  #resize_increments = false
+
+[scrolling]
+  # Maximum number of lines in the scrollback buffer.
+  # Specifying '0' will disable scrolling.
+  history = 5000
+
+  # Number of lines the viewport will move for every line scrolled when
+  # scrollback is enabled (history > 0).
+  #multiplier = 3
+
+# Font configuration
+[font]
+  # Normal (roman) font face
+  normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+
+  # Bold font face
+  # If the bold family is not specified, it will fall back to the
+  # value specified for the normal font.
+  # The `style` can be specified to pick a specific face.
+  #bold = { style = "Bold" }
+
+  # Italic font face
+  # If the italic family is not specified, it will fall back to the
+  # value specified for the normal font.
+  # The `style` can be specified to pick a specific face.
+  #italic = { style = "Italic" }
+    
+  # Bold italic font face
+  # If the bold italic family is not specified, it will fall back to the
+  # value specified for the normal font.
+  # The `style` can be specified to pick a specific face.
+  #bold_italic = { style = "Bold Italic" }
+
+  # Point size
+  size = 11.0
+
+  # Offset is the extra space around each character. `offset.y` can be thought of
+  # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
+  offset = { x = 0, y = 1 }
+
+  # Glyph offset determines the locations of the glyphs within their cells with
+  # the default being at the bottom. Increasing `x` moves the glyph to the right,
+  # increasing `y` moves the glyph upwards.
+  #glyph_offset= { x= 0, y= 0 }
+
+  # use a custom built-in font for box drawing characters
+  # (Unicode points U+2500 - U+259F), legacy computing symbols (U+1FB00 - U+1FB3B), 
+  # and powerline symbols (U+E0B0 - U+E0B3).
+  #builtin_box_drawing = true
+
+# Color schme
+# [colors]
+#   [colors.primary]
+#   background = "#f2ecbc"
+#   foreground = "#545464"
+# 
+#   [colors.normal]
+#   black = "#1f1f28"
+#   red = "#c84053"
+#   green = "#6f894e"
+#   yellow = "#77713f"
+#   blue = "#4d699b"
+#   magenta = "#b35b79"
+#   cyan = "#597b75"
+#   white = "#545464"
+# 
+#   [colors.bright]
+#   black = "#8a8980"
+#   red = "#d7474b"
+#   green = "#6e915f"
+#   yellow = "#836f4a"
+#   blue = "#6693bf"
+#   magenta = "#624c83"
+#   cyan = "#5e857a"
+#   white = "#43436c"
+# 
+#   [colors.selection]
+#   background = "#c9cbd1"
+#   foreground = "#43436c"
+#   
+#   # If `true`, bold text is drawn using the bright color variants.
+#   #draw_bold_text_with_bright_colors = false
+
+# Visual Bell
+#
+# Any time the BEL code is received, Alacritty "rings" the visual bell. Once
+# rung, the terminal background will be set to white and transition back to the
+# default background color. You can control the rate of this transition by
+# setting the `duration` property (represented in milliseconds). You can also
+# configure the transition function by setting the `animation` property. A command
+# can be run when the bell is rung by setting the `command` property.
+#
+# Values for `animation`:
+#   - "Ease"
+#   - "EaseOut"
+#   - "EaseOutSine"
+#   - "EaseOutQuad"
+#   - "EaseOutCubic"
+#   - "EaseOutQuart"
+#   - "EaseOutQuint"
+#   - "EaseOutExpo"
+#   - "EaseOutCirc"
+#   - "Linear"
+#
+# Specifying a `duration` of `0` will disable the visual bell.
+#[bell]
+#  animation = "EaseOutExpo"
+#  duration = 0
+#  color = '#ffffff'
+#  command = "None"
+
+
+[selection]
+  #semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+  # When set to `true`, selected text will be copied to the primary clipboard.
+  #save_to_clipboard = false
+
+[cursor]
+  # Cursor style
+  #
+  # Values for `shape`:
+  #   - ▇ "Block"
+  #   - _ "Underline"
+  #   - | "Beam"
+  # Values for `blinking`:
+  #   - "Never"
+  #   - "Off"
+  #   - "On"
+  #   - "Always"
+  #style = { shape = "Block", blinking = "Off" }
+
+  # Vi mode style
+  # Falls back to active value of normal cursor if not specified
+  #vi_mode_style = "None"
+
+  # If this is `true`, the cursor will be rendered as a hollow box when the
+  # window is not focused.
+  #unfocused_hollow = true
+  
+  # Cursor thicknes
+  #thickness = 0.15
+
+[terminal]
+  # Controls the ability to write to the system clipboard with
+  # the OSC52 escape sequence.
+  #osc52 = "OnlyCopy"
+
+[mouse]
+  # Hide when typing
+  #hide_when_typing = false
+  # 
+  # bindings = [{ <mouse>, <mods>, <mode>, <command> | <chars> | <action> },]
+  # 
+  # See keyboard.bindings for full documentation on mods, mode,
+  # command, chars, and action.
+  # 
+  # When an application running within Alacritty captures the mouse, 
+  # the `Shift` modifier can be used to suppress mouse reporting. If no action 
+  # is found for the event, actions for the event without the `Shift` modifier 
+  # are triggered instead.
+  # 
+  # mouse = "Middle" | "Left" | "Right" | "Back" | "Forward" | <integer>
+  # Mouse button which needs to be pressed to trigger this binding.
+  #
+  # Expand the selection to the current mouse cursor location.
+  # action = <keyboard.bindings.action> | "ExpandSelection"
+  #
+  # Example:
+  #   [mouse]
+  #   bindings = [
+  #   { mouse = "Right", mods = "Control", action = "Paste" },
+  #   ]
+
+[hints]
+  # Terminal hints can be used to find text or hyperlinks in the visible part of the terminal and pipe it to other applications.
+  # 
+  #alphabet = "<string>"
+  # Keys used for the hint labels.
+  # Default: "jfkdls;ahgurieowpq"
+  # 
+  #enabled = [{ <regex>, <hyperlinks>, <post_processing>, <persist>, <action>, <command>, <binding>, <mouse> },]
+  # Array with all available hints.
+  # 
+  # Each hint must have at least one of regex or hyperlinks and either an action or a command.
+  #
+  # regex = "<string>"
+  # Regex each line will be compared against.
+  #
+  # hyperlinks = true | false
+  # When this is true, all OSC 8 escape sequence hyperlinks will be
+  # included in the hints.
+  # 
+  # post_processing = true | false
+  # When this is true, heuristics will be used to shorten the match if
+  # there are characters likely not to be part of the hint (e.g. a trailing .).
+  # This is most useful for URIs and applies only to regex matches.
+  # 
+  # persist = true | false
+  # When this is true, hints remain persistent after selection.
+  # 
+  # action = "Copy" | "Paste" | "Select" | "MoveViModeCursor"
+  #         Copy
+  #             Copy the hint's text to the clipboard.
+  #         Paste
+  #             Paste the hint's text to the terminal or search.
+  #         Select
+  #             Select the hint's text.
+  #         MoveViModeCursor
+  #             Move the vi mode cursor to the beginning of the hint.
+  # 
+  # command = "<string>" | { program = "<string>", args = ["<string>",] }
+  # Command which will be executed when the hint is clicked or 
+  # selected with the binding.
+  # The hint's text is always attached as the last argument.
+  # 
+  # binding = { key = "<string>", mods = "<string>", mode = "<string>" }
+  # This controls which key binding is used to start the keyboard hint 
+  # selection process.
+  # See keyboard.bindings for documentation on available values.
+  # 
+  # mouse = { mods = "<string>", enabled = true | false }
+  # The enabled field controls if the hint should be underlined when hovering 
+  # over the hint text with all mods pressed.
+  # See keyboard.bindings for documentation on available mods.
+  # 
+  # Default:
+  #   [[hints.enabled]]
+  #   command = "xdg-open" # On Linux/BSD
+  #   #command = "open" # On macOS
+  #   #command = { program = "cmd", args = [ "/c", "start", "" ] } # On Windows
+  #   hyperlinks = true
+  #   post_processing = true
+  #   persist = false
+  #   mouse.enabled = true
+  #   binding = { key = "U", mods = "Control|Shift" }
+  #   regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+
+[keyboard]
+# bindings = [{ <key>, <mods>, <mode>, <command> | <chars> | <action> },]

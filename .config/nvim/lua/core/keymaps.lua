@@ -12,15 +12,14 @@ map("n", "Y", "y$", opts)                  -- yank to eol
 map("n", "P", "$p", opts)                  -- pasta at eol
 map("n", "n", "nzz", opts)                 -- centre movin' up
 map("n", "N", "Nzz", opts)                 -- and down, like a roller coastah
-map("n", "o", "o<esc>", opts)              -- why go into insert mode
-map("n", "O", "O<esc>", opts)              -- when i just want to add lines
 map("v", "<", "<gv", opts)                 -- ffs,
 map("v", ">", ">gv", opts)                 -- why is this not default behaviour
 --}}}
 
 -- vscode? {{{
 map("n", "<leader>kx", "<cmd>%s/\\s\\+$//e<cr>", opts)             -- trim
-map({"n", "v"}, "<leader>h", ":s:::cg<left><left><left><left>")    -- replace
+map("v", "<leader>h", ":s|||cg<left><left><left><left>")    -- replace
+map("n", "<leader>h", ":%s|||cg<left><left><left><left>")    -- replace
 map("n", "<esc>", "<cmd>noh | echo<cr><esc>")                      -- clear cmdline
 -- }}}
 

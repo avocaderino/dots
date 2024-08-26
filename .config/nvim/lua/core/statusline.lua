@@ -6,6 +6,7 @@ local widths = {
   mode  = 70,
 --  ftype = 60,
   pos   = 70,
+  encoding = 70,
 }
 
 local function truncate(width)
@@ -167,10 +168,6 @@ local function pos()
   if truncate(widths.pos) then return " %l:%-c " end
   return "  %l:%-c  "
 end
-
--- colors {{{
-vim.api.nvim_set_hl(0, "Block", {link = "Cursor"})
--- }}}
 
 function statusline()
   -- powaaaah

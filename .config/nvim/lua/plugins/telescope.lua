@@ -32,8 +32,8 @@ return {
       layout_config = {
         width = 0.95,
         height = 0.95,
-        preview_cutoff = 25,
-        vertical = { preview_height = 0.20 }
+        flip_columns = 25,
+        prompt_position = "top",
       },
       dynamic_preview_title = true,
       history = false

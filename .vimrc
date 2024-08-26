@@ -82,9 +82,9 @@ set wildmode=list:longest
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 " Undofile
-"set undodir=~/.vim/backup
-"set undofile
-"set undoreload=10000
+set undodir=~/.vim/backup
+set undofile
+set undoreload=10000
 
 
 " Theme ------------------------------------------------------------------ {{{
@@ -93,14 +93,14 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 set termguicolors
 
 " Set colorcheme.
-colorscheme base16-tomorrow-night
+"colorscheme base16-tomorrow-night
 
 " Turn syntax highlighting on.
 syntax on
 
 " Highlights
-hi Search   guibg=#282a2e
-hi LineNr   guifg=#969896
+"hi Search   guibg=#282a2e
+"hi LineNr   guifg=#969896
 
 " }}}
 
@@ -108,27 +108,13 @@ hi LineNr   guifg=#969896
 " Mappings --------------------------------------------------------------- {{{
 
 " Set the backslash as the leader key.
-let mapleader = '\'
+let mapleader = '<space>'
 
 " Press \\ to jump back to the last cursor position.
-nnoremap <leader>\ ``
-
-" Press \p to print the current file to the default printer from a Linux operating system.
-" View available printers:   lpstat -v
-" Set default printer:       lpoptions -d <printer_name>
-" <silent> means do not display output.
-nnoremap <silent> <leader>p :%w !lp<CR>
+nnoremap <leader><space> ``
 
 " Type jj to exit insert mode quickly.
 inoremap jj <Esc>
-
-" Press the space bar to type the : character in command mode.
-nnoremap <space> :
-
-" Pressing the letter o will open a new line below the current one.
-" Exit insert mode after creating a new line above or below the current line.
-nnoremap o o<esc>
-nnoremap O O<esc>
 
 " Center the cursor vertically when moving to the next word during a search.
 nnoremap n nzz
@@ -208,7 +194,7 @@ set statusline=
 
 " Status line highlighted group
 set statusline+=\ %{toupper(g:currentmode[mode()])} " Current mode
-set statusline+=\  
+set statusline+=\
 
 " Status line unhighlighted group
 set statusline+=%1*
@@ -223,7 +209,7 @@ set statusline+=%=
 " Status line unhighlighted group
 set statusline+=\ %{&filetype}                      " File type
 set statusline+=\ [%{&fileencoding}]                " File encoding
-set statusline+=\  
+set statusline+=\
 
 " Status line highlighted group
 set statusline+=%*
