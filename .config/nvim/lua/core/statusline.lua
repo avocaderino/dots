@@ -5,8 +5,7 @@ local api = vim.api
 local widths = {
   mode  = 70,
 --  ftype = 60,
-  pos   = 70,
-  encoding = 70,
+--  pos   = 70,
 }
 
 local function truncate(width)
@@ -53,18 +52,18 @@ local function filename()
   -- Beautiful
   local filepath = api.nvim_buf_get_name(0):match("[^/]+$")
   if not filepath then
-    filepath = vim.bo.filetype:match(".+") or "Untitled"
+    filepath = vim.o.filetype:match(".+") or "Untitled"
   end
   return string.format(" %%<%.30s ", filepath)
 end
 
 local function readonly()
-  if api.nvim_buf_get_option(0, "readonly") then return " " end
+  if vim.o.readonly then return " " end
   return ""
 end
 
 local function modified()
-  if api.nvim_buf_get_option(0, "modified") then return "+" end
+  if vim.o.modified then return "+" end
   return ""
 end
 
@@ -152,7 +151,7 @@ local icons = {
 -- }}}
 
 local function filetype()
-  local ftype = vim.bo.filetype
+  local ftype = vim.o.filetype
   local icon = icons[ftype]
   if not icon then
     icon = "" -- default
@@ -165,8 +164,8 @@ local function filetype()
 end
 
 local function pos()
-  if truncate(widths.pos) then return " %l:%-c " end
-  return "  %l:%-c  "
+--  if truncate(widths.pos) then return "%2l:%-2c" end
+  return " %3l:%-2c "
 end
 
 function statusline()
@@ -186,4 +185,4 @@ function statusline()
 end
 
 -- set statusline
-vim.opt.statusline = "%{%v:lua.statusline()%}"
+vim.o.statusline = "%{%v:lua.statusline()%}"

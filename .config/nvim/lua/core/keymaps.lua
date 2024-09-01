@@ -12,15 +12,17 @@ map("n", "Y", "y$", opts)                  -- yank to eol
 map("n", "P", "$p", opts)                  -- pasta at eol
 map("n", "n", "nzz", opts)                 -- centre movin' up
 map("n", "N", "Nzz", opts)                 -- and down, like a roller coastah
+map("n", "k", "gk", opts)                  -- ffs,
+map("n", "j", "gj", opts)                  -- why is this not default behaviour
 map("v", "<", "<gv", opts)                 -- ffs,
 map("v", ">", ">gv", opts)                 -- why is this not default behaviour
 --}}}
 
 -- vscode? {{{
-map("n", "<leader>kx", "<cmd>%s/\\s\\+$//e<cr>", opts)             -- trim
-map("v", "<leader>h", ":s|||cg<left><left><left><left>")    -- replace
-map("n", "<leader>h", ":%s|||cg<left><left><left><left>")    -- replace
-map("n", "<esc>", "<cmd>noh | echo<cr><esc>")                      -- clear cmdline
+map("n", "<leader>kx", "<cmd>%s/\\s\\+$//e<cr>", opts) -- trim trailing whitespaces
+map("v", "<leader>h", ":s:::cg<left><left><left><left>", {noremap = true})
+map("n", "<leader>h", ":%s:::cg<left><left><left><left>", {noremap = true})
+map("n", "<esc>", "<cmd>noh | echo<cr><esc>", {noremap = true}) -- clear cmdline
 -- }}}
 
 -- move lines {{{

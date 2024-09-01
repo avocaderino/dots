@@ -15,7 +15,9 @@ return {
         "query",
         "python",
         "html",
-        "css"
+        "css",
+        "markdown",
+        "latex"
       },
       highlight = {enable = true},
       indent = {enable = true}

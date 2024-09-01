@@ -1,6 +1,6 @@
 -- config
 
-local o = vim.opt
+local o = vim.o
 local g = vim.g
 
 --vim.loader.enable() -- experimental lua loader?, lazy.nvim does it anyway
@@ -22,6 +22,8 @@ g.loaded_rrhelper          = 1
 g.loaded_getscript         = 1
 g.loaded_getscriptPlugin   = 1
 g.loaded_tutor_mode_plugin = 1
+--g.loaded_netrw             = 1
+--g.loaded_netrwPlugin       = 1
 -- language
 g.loaded_python_provider  = 0   -- python2 is deprecated anyway
 g.loaded_perl_provider    = 0   -- perl
@@ -73,5 +75,20 @@ o.undofile      = true    -- prevent fuckups
 o.undolevels    = 1000
 o.undoreload    = 10000
 o.autoread      = false   -- I kinda ❤ that prompt
+
+-- }}}
+
+-- Autocmds {{{
+
+-- set number for big windows
+vim.api.nvim_create_autocmd({"VimResized", "BufEnter"}, {
+  callback = function()
+    if vim.o.columns >= 90 then
+      vim.o.number = true
+    else
+      vim.o.number = false
+    end
+  end,
+})
 
 -- }}}

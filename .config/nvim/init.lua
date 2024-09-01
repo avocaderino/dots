@@ -27,4 +27,5 @@ require("lazy").setup({
   require "plugins.autopairs",
   require "plugins.lightspeed",
   require "plugins.vim-sleuth",
+  require "plugins.markview"
 })
