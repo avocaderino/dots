@@ -52,18 +52,18 @@ local function filename()
   -- Beautiful
   local filepath = api.nvim_buf_get_name(0):match("[^/]+$")
   if not filepath then
-    filepath = vim.o.filetype:match(".+") or "Untitled"
+    filepath = vim.bo.filetype:match(".+") or "Untitled"
   end
   return string.format(" %%<%.30s ", filepath)
 end
 
 local function readonly()
-  if vim.o.readonly then return " " end
+  if vim.bo.readonly then return " " end
   return ""
 end
 
 local function modified()
-  if vim.o.modified then return "+" end
+  if vim.bo.modified then return "+" end
   return ""
 end
 
@@ -151,7 +151,7 @@ local icons = {
 -- }}}
 
 local function filetype()
-  local ftype = vim.o.filetype
+  local ftype = vim.bo.filetype
   local icon = icons[ftype]
   if not icon then
     icon = "" -- default
@@ -185,4 +185,4 @@ function statusline()
 end
 
 -- set statusline
-vim.o.statusline = "%{%v:lua.statusline()%}"
+vim.opt.statusline = "%{%v:lua.statusline()%}"

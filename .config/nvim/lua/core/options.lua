@@ -1,6 +1,6 @@
 -- config
 
-local o = vim.o
+local o = vim.opt
 local g = vim.g
 
 --vim.loader.enable() -- experimental lua loader?, lazy.nvim does it anyway

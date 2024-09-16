@@ -9,12 +9,6 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons",
     {
-      "nvim-telescope/telescope-file-browser.nvim",
-      config = function()
-        require("telescope").load_extension("file_browser")
-      end
-    },
-    {
       "nvim-telescope/telescope-fzf-native.nvim",
       config = function()
         require("telescope").load_extension("fzf")
@@ -24,7 +18,7 @@ return {
         return vim.fn.executable 'make' == 1
       end
     }
-},
+  },
 
   opts = {
     defaults = {
@@ -38,6 +32,5 @@ return {
       dynamic_preview_title = true,
       history = false
     }
-  }
-
+  },
 }
