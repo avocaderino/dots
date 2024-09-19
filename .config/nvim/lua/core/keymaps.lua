@@ -41,19 +41,6 @@ map("n", "<c-k>", "<c-w>k", opts)    -- wind
 map("n", "<c-l>", "<c-w>l", opts)    -- ows
 -- }}}
 
--- plugins
-
 -- lazy {{{
 map("n", "<leader>l", "<cmd>Lazy<cr>", opts)
--- }}}
-
--- telescope {{{
-map("n", "<leader>et","<cmd>Telescope<cr>", opts)
-map("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
-map("n", "<leader>b", "<cmd>Telescope buffers<cr>", opts)
-map("n", "<c-f>", "<cmd>Telescope current_buffer_fuzzy_find<cr>", opts)
--- }}}
-
--- oil {{{
-map("n", "<leader>o", "<cmd>Oil --float<cr>", opts)
 -- }}}

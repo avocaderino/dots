@@ -1,94 +1,76 @@
--- config
-
-local o = vim.opt
-local g = vim.g
+-- set options
 
 --vim.loader.enable() -- experimental lua loader?, lazy.nvim does it anyway
 
 -- Plugins {{{
 
---g.did_load_filetypes       = 0
-g.loaded_gzip              = 1
-g.loaded_tar               = 1
-g.loaded_vimball           = 1
-g.loaded_tarPlugin         = 1
-g.loaded_zipPlugin         = 1
-g.loaded_vimballPlugin     = 1
-g.loaded_2html_plugin      = 1
-g.loaded_matchit           = 1
-g.loaded_spec              = 1
-g.loaded_remote_plugins    = 1
-g.loaded_rrhelper          = 1
-g.loaded_getscript         = 1
-g.loaded_getscriptPlugin   = 1
-g.loaded_tutor_mode_plugin = 1
---g.loaded_netrw             = 1
---g.loaded_netrwPlugin       = 1
+--vim.g.did_load_filetypes       = 0
+vim.g.loaded_gzip              = 1
+vim.g.loaded_tar               = 1
+vim.g.loaded_vimball           = 1
+vim.g.loaded_tarPlugin         = 1
+vim.g.loaded_zipPlugin         = 1
+vim.g.loaded_vimballPlugin     = 1
+vim.g.loaded_2html_plugin      = 1
+vim.g.loaded_matchit           = 1
+vim.g.loaded_spec              = 1
+vim.g.loaded_remote_plugins    = 1
+vim.g.loaded_rrhelper          = 1
+vim.g.loaded_getscript         = 1
+vim.g.loaded_getscriptPlugin   = 1
+vim.g.loaded_tutor_mode_plugin = 1
+vim.g.loaded_netrw             = 1
+vim.g.loaded_netrwPlugin       = 1
 -- language
-g.loaded_python_provider  = 0   -- python2 is deprecated anyway
-g.loaded_perl_provider    = 0   -- perl
-g.loaded_ruby_provider    = 0   -- ruby
-g.loaded_node_provider    = 0   -- the infamous node
-g.python3_host_prog       = "/bin/python3"
-g.loaded_spellfile_plugin = 1   -- technically a language plugin
+vim.g.loaded_python_provider  = 0   -- python2 is deprecated anyway
+vim.g.loaded_perl_provider    = 0   -- perl
+vim.g.loaded_ruby_provider    = 0   -- ruby
+vim.g.loaded_node_provider    = 0   -- the infamous node
+vim.g.python3_host_prog       = "/bin/python3"
+vim.g.loaded_spellfile_plugin = 1   -- technically a language plugin
 
 -- }}}
 
 -- Interface {{{
 
-g.netrw_liststyle   = 3       -- tree view
-o.showcmd           = true    -- show command
-o.history           = 50      -- command history
-o.showmode          = false   -- we have a statusline ffs
-o.ruler             = false   -- long live democracy
-o.wildmenu          = true    -- wildmenu
-o.wildmode          = "longest,list"
-o.wildignore        = "*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.xlsx,*.pptx"
-o.laststatus        = 2       -- always show statusline
+--vim.g.netrw_liststyle   = 3       -- tree view
+vim.opt.showcmd           = true    -- show command
+vim.opt.history           = 50      -- command history
+vim.opt.showmode          = false   -- we have a statusline ffs
+vim.opt.ruler             = false   -- long live democracy
+vim.opt.wildmenu          = true    -- wildmenu
+vim.opt.wildmode          = "longest,list"
+vim.opt.wildignore        = "*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.xlsx,*.pptx"
+vim.opt.laststatus        = 2       -- always show statusline
 
 -- }}}
 
 -- Editor {{{
 
-o.clipboard     = "unnamedplus"
-o.shiftwidth    = 4         -- indentation
-o.tabstop       = 4
-o.expandtab     = true      -- maintain peace
-o.foldmethod    = "marker"  -- gotta deal with kitty.conf
-o.ignorecase    = true      -- search
-o.smartcase     = true
-o.incsearch     = true      -- highlight searches
-o.showmatch     = false     -- jump brackets (why?)
-o.number        = false     -- noadd numbers
-o.scrolloff     = 10        -- scrolloff
-o.cursorline    = false     -- highlight cursor row
-o.cursorcolumn  = false     -- & column
-o.spell         = false     -- ffs, I know how to spell
+vim.opt.clipboard     = "unnamedplus"
+vim.opt.shiftwidth    = 4         -- indentation
+vim.opt.tabstop       = 4
+vim.opt.expandtab     = true      -- maintain peace
+vim.opt.foldmethod    = "marker"  -- gotta deal with kitty.conf
+vim.opt.ignorecase    = true      -- search
+vim.opt.smartcase     = true
+vim.opt.incsearch     = true      -- highlight searches
+vim.opt.showmatch     = false     -- jump brackets (why?)
+vim.opt.number        = false     -- noadd numbers
+vim.opt.scrolloff     = 10        -- scrolloff
+vim.opt.cursorline    = false     -- highlight cursor row
+vim.opt.cursorcolumn  = false     -- & column
+vim.opt.spell         = false     -- ffs, I know how to spell
 
 -- }}}
 
 -- File {{{
 
-o.updatetime    = 100
-o.backup        = false   -- living on the edge
-o.undofile      = true    -- prevent fuckups
-o.undolevels    = 1000
-o.undoreload    = 10000
-o.autoread      = false   -- I kinda ❤ that prompt
-
--- }}}
-
--- Autocmds {{{
-
--- set number for big windows
-vim.api.nvim_create_autocmd({"VimResized", "BufEnter"}, {
-  callback = function()
-    if vim.o.columns >= 90 then
-      vim.o.number = true
-    else
-      vim.o.number = false
-    end
-  end,
-})
+vim.opt.updatetime    = 100
+vim.opt.backup        = false   -- living on the edge
+vim.opt.undofile      = true    -- prevent fuckups
+vim.opt.undolevels    = 1000
+vim.opt.undoreload    = 10000
+vim.opt.autoread      = false   -- I kinda ❤ that prompt
 
 -- }}}

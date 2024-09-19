@@ -1,7 +1,5 @@
 -- Status Line
 
-local api = vim.api
-
 local widths = {
   mode  = 70,
 --  ftype = 60,
@@ -9,7 +7,7 @@ local widths = {
 }
 
 local function truncate(width)
-  local current_width = api.nvim_win_get_width(0)
+  local current_width = vim.api.nvim_win_get_width(0)
   return current_width < width
 end
 
@@ -41,7 +39,7 @@ local modes = setmetatable({
 })
 
 local function mode()
-  local current_mode = api.nvim_get_mode().mode
+  local current_mode = vim.api.nvim_get_mode().mode
   if truncate(widths.mode) then
     return string.format(" %s ", modes[current_mode][2]):upper()
   end
@@ -50,7 +48,7 @@ end
 
 local function filename()
   -- Beautiful
-  local filepath = api.nvim_buf_get_name(0):match("[^/]+$")
+  local filepath = vim.api.nvim_buf_get_name(0):match("[^/]+$")
   if not filepath then
     filepath = vim.bo.filetype:match(".+") or "Untitled"
   end

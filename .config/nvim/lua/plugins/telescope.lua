@@ -3,8 +3,6 @@
 return {
 
   "nvim-telescope/telescope.nvim",
-  cmd = "Telescope",
-
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons",
@@ -20,8 +18,33 @@ return {
     }
   },
 
+  keys = {
+    {
+      "<leader>f", mode = {"n"},
+      function() require("telescope.builtin").find_files() end,
+      desc = "Find file"
+    },
+    {
+      "<leader>b", mode = {"n"},
+      function() require("telescope.builtin").buffers() end,
+      desc = "Buffer management"
+    },
+    {
+      "<leader>et", mode = {"n"},
+      function() require("telescope.builtin").builtin() end,
+      desc = "Telescope pickers"
+    },
+    {
+      "<c-f>", mode = {"n"},
+      function() require("telescope.builtin").live_grep() end,
+      desc = "Search string in cwd"
+    },
+  },
+
   opts = {
     defaults = {
+      prompt_prefix = " ",
+      selection_caret = "| ",
       layout_strategy = "flex",
       layout_config = {
         width = 0.95,
