@@ -19,4 +19,3 @@ require("lazy").setup({
 })
 
 vim.cmd [[colorscheme kanagawa]] -- set colorscheme
-
