@@ -15,7 +15,6 @@ return {
       "python",
       "html",
       "css",
-      "markdown",
       "latex"
     },
   },

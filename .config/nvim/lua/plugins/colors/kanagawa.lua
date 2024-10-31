@@ -42,7 +42,7 @@ return {
     theme = "dragon",
     background = {
       dark = "dragon",
-      light = "lotus"
+      light = "wave"
     },
   },
 }
