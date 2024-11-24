@@ -18,8 +18,4 @@ require("lazy").setup({
   { import = "plugins.colors" },
 })
 
-if os.getenv("PTYXIS_VERSION") then
-    vim.o.background = "light"
-end
-
 vim.cmd [[colorscheme kanagawa]] -- set colorscheme

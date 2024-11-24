@@ -5,6 +5,7 @@ return {
   event = "VeryLazy",
   opts = {
     check_ts = true,
+    disable_filetype = {"tex", "TelescopePrompt"},
     fast_wrap = {
       map = "<M-e>",
       chars = { "{", "[", "(", "\"", "'" },
