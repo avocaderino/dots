@@ -1,4 +1,6 @@
--- Keymaps
+-- Keymaps are automatically loaded on the VeryLazy event
+-- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- Add any additional keymaps here
 
 vim.g.mapleader = " "
 -- map helper
@@ -29,8 +31,18 @@ map("n", "<m-j>", "<cmd>m .+1<cr>==", { noremap = true, silent = true, desc = "S
 map("n", "<m-k>", "<cmd>m .-2<cr>==", { noremap = true, silent = true, desc = "Shift current line upwards" })
 map("i", "<m-j>", "<esc><cmd>m .+1<cr>==gi", { noremap = true, silent = true, desc = "Shift current line downwards" })
 map("i", "<m-k>", "<esc><cmd>m .-2<cr>==gi", { noremap = true, silent = true, desc = "Shift current line upwards" })
-map("v", "<m-j>", ":m '>+1<cr>gv=gv", { noremap = true, silent = true, desc = "Shift lines containing selection downwards" })
-map("v", "<m-k>", ":m '<-2<cr>gv=gv", { noremap = true, silent = true, desc = "Shift lines containing selection upwards" })
+map(
+  "v",
+  "<m-j>",
+  ":m '>+1<cr>gv=gv",
+  { noremap = true, silent = true, desc = "Shift lines containing selection downwards" }
+)
+map(
+  "v",
+  "<m-k>",
+  ":m '<-2<cr>gv=gv",
+  { noremap = true, silent = true, desc = "Shift lines containing selection upwards" }
+)
 -- }}}
 
 -- windows {{{
