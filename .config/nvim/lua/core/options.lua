@@ -47,30 +47,31 @@ vim.opt.laststatus        = 2       -- always show statusline
 
 -- Editor {{{
 
-vim.opt.clipboard     = "unnamedplus"
-vim.opt.shiftwidth    = 4         -- indentation
-vim.opt.tabstop       = 4
-vim.opt.expandtab     = true      -- maintain peace
-vim.opt.foldmethod    = "marker"  -- gotta deal with kitty.conf
-vim.opt.ignorecase    = true      -- search
-vim.opt.smartcase     = true
-vim.opt.incsearch     = true      -- highlight searches
-vim.opt.showmatch     = false     -- jump brackets (why?)
-vim.opt.number        = false     -- noadd numbers
-vim.opt.scrolloff     = 10        -- scrolloff
-vim.opt.cursorline    = false     -- highlight cursor row
-vim.opt.cursorcolumn  = false     -- & column
-vim.opt.spell         = false     -- ffs, I know how to spell
+vim.opt.clipboard      = "unnamedplus"
+vim.opt.shiftwidth     = 4         -- indentation
+vim.opt.tabstop        = 4
+vim.opt.expandtab      = true      -- maintain peace
+vim.opt.foldmethod     = "marker"  -- gotta deal with kitty.conf
+vim.opt.ignorecase     = true      -- search
+vim.opt.smartcase      = true
+vim.opt.incsearch      = true      -- highlight searches
+vim.opt.showmatch      = false     -- jump brackets (why?)
+vim.opt.number         = true     
+vim.opt.relativenumber = false     -- noadd numbers
+vim.opt.scrolloff      = 10        -- scrolloff
+vim.opt.cursorline     = true     -- highlight cursor row
+vim.opt.cursorcolumn   = false     -- & column
+vim.opt.spell          = false     -- ffs, I know how to spell
 
 -- }}}
 
 -- File {{{
 
-vim.opt.updatetime    = 100
-vim.opt.backup        = false   -- living on the edge
-vim.opt.undofile      = true    -- prevent fuckups
-vim.opt.undolevels    = 1000
-vim.opt.undoreload    = 10000
-vim.opt.autoread      = false   -- I kinda ❤ that prompt
+vim.opt.updatetime     = 100
+vim.opt.backup         = false   -- living on the edge
+vim.opt.undofile       = true    -- prevent fuckups
+vim.opt.undolevels     = 1000
+vim.opt.undoreload     = 10000
+vim.opt.autoread       = false   -- I kinda ❤ that prompt
 
 -- }}}
