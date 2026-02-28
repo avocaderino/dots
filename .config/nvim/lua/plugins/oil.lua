@@ -3,6 +3,7 @@
 return {
   "stevearc/oil.nvim",
   dependencies = { "echasnovski/mini.icons" },
+  cmd = "Oil",
   keys = {
     {
       "<leader>o", mode = {"n"},

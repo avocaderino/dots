@@ -1,3 +1,5 @@
+-- mini.icons
+
 return {
   "echasnovski/mini.icons",
   --lazy = true,

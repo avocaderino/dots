@@ -15,7 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 -- plugins
 require("lazy").setup({
   { import = "plugins" },
-  { import = "plugins.colors" },
+  { import = "plugins.colors" }
 })
 
 vim.cmd [[colorscheme kanagawa]] -- set colorscheme
